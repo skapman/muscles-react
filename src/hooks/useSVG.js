@@ -4,7 +4,11 @@ import { useState, useEffect, useRef } from 'react';
  * Load SVG from URL
  */
 async function loadSVG(url) {
-  const response = await fetch(url);
+  // Add base URL for production (GitHub Pages)
+  const baseUrl = import.meta.env.BASE_URL;
+  const fullUrl = url.startsWith('/') ? `${baseUrl}${url.slice(1)}` : url;
+
+  const response = await fetch(fullUrl);
   if (!response.ok) {
     throw new Error(`Failed to load SVG: ${response.statusText}`);
   }
