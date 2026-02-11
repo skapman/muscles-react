@@ -7,8 +7,8 @@
     "color": "#00d4ff",
     "glowColor": "rgba(0, 212, 255, 0.8)",
     "svgFiles": [
-      { "id": "front", "path": "img/body-front.svg" },
-      { "id": "back", "path": "img/body-back.svg" }
+      { "id": "front", "path": "/img/body-front.svg" },
+      { "id": "back", "path": "/img/body-back.svg" }
     ],
     "hasInteractivity": true,
     "type": "detailed",
@@ -23,7 +23,7 @@
     "color": "#ff5252",
     "glowColor": "rgba(255, 82, 82, 0.8)",
     "svgFiles": [
-      { "id": "front", "path": "img/body-front-color.svg" }
+      { "id": "front", "path": "/img/body-front-color.svg" }
     ],
     "hasInteractivity": false,
     "type": "overlay",
@@ -39,7 +39,7 @@
     "color": "#ffeb3b",
     "glowColor": "rgba(255, 235, 59, 0.8)",
     "svgFiles": [
-      { "id": "nervous", "path": "img/nervous-system.svg" }
+      { "id": "nervous", "path": "/img/nervous-system.svg" }
     ],
     "hasInteractivity": false,
     "type": "overlay",
@@ -54,7 +54,7 @@
     "color": "#4caf50",
     "glowColor": "rgba(76, 175, 80, 0.8)",
     "svgFiles": [
-      { "id": "respiratory", "path": "img/respiratory-system.svg" }
+      { "id": "respiratory", "path": "/img/respiratory-system.svg" }
     ],
     "hasInteractivity": false,
     "type": "overlay",
@@ -69,7 +69,7 @@
     "color": "#f44336",
     "glowColor": "rgba(244, 67, 54, 0.8)",
     "svgFiles": [
-      { "id": "cardiovascular", "path": "img/circulatory-system.svg" }
+      { "id": "cardiovascular", "path": "/img/circulatory-system.svg" }
     ],
     "hasInteractivity": false,
     "type": "overlay",
