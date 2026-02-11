@@ -42,6 +42,9 @@
 
 * {
     margin: 0;
+    /* Global fix for Chrome tap highlight */
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
     padding: 0;
     box-sizing: border-box;
 }

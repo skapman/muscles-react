@@ -1,23 +1,37 @@
 import React from 'react';
 import { MuscleLayer } from '@components/layers/MuscleLayer';
-import { SystemBlocks } from '@components/blocks/SystemBlocks';
+import { GenericLayer } from '@components/layers/GenericLayer';
 import { LayerSlider } from '@components/layers/LayerSlider';
+import { useLayer } from '@hooks/useLayer';
 
 /**
  * HomePage Component
  * Main page with muscle visualization
  */
 export function HomePage() {
+  const { currentLayer, currentLayerData, hasBlocks } = useLayer();
+
+  console.log('🏠 HomePage render', { currentLayer, hasBlocks, layerData: currentLayerData });
+
+  // Get SVG path for current layer
+  const svgPath = currentLayerData?.svgFiles?.[0]?.path || null;
+
   return (
-    <div className="page home-page">
+    <div className="page home-page" data-layer={currentLayer}>
       <main className="main-content">
-        {/* Muscle Layer with SVG */}
-        <MuscleLayer />
+        {/* Show MuscleLayer only for muscles layer */}
+        {currentLayer === 'muscles' && <MuscleLayer />}
 
-        {/* System Blocks (for other layers) */}
-        <SystemBlocks />
+        {/* Show GenericLayer for other layers */}
+        {currentLayer !== 'muscles' && (
+          <GenericLayer
+            layerId={currentLayer}
+            svgPath={svgPath}
+            hasBlocks={hasBlocks}
+          />
+        )}
 
-        {/* Layer Slider */}
+        {/* Layer Slider - always visible */}
         <LayerSlider />
       </main>
     </div>

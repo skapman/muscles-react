@@ -23,11 +23,16 @@ export function AppProvider({ children }) {
   // Sidebar state
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  // Persist theme to localStorage
+  // Persist theme to localStorage and apply to DOM
   useEffect(() => {
     localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+
+  // Apply current layer to DOM for dynamic colors
+  useEffect(() => {
+    document.documentElement.setAttribute('data-layer', currentLayer);
+  }, [currentLayer]);
 
   // Memoized toggle functions
   const toggleTheme = useCallback(() => {

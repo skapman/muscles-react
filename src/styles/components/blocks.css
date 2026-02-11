@@ -11,6 +11,10 @@
     height: 100%;
     pointer-events: none;
     z-index: 10;
+
+    /* Isolate layout to prevent affecting other elements */
+    contain: layout style;
+    will-change: contents;
 }
 
 .system-block {
@@ -18,35 +22,82 @@
     background: rgba(26, 26, 46, 0.95);
     backdrop-filter: blur(20px);
     border: 1px solid var(--accent-primary);
-    border-radius: 16px;
-    padding: 20px;
-    max-width: 350px;
+    border-radius: 12px;
+    padding: 8px 12px;
+    max-width: 250px;
     box-shadow:
         var(--shadow-lg),
         0 0 30px var(--glow-color);
     pointer-events: auto;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: opacity var(--transition-normal), box-shadow var(--transition-normal);
     opacity: 0;
     animation: block-appear 0.5s ease-out forwards;
+
+    /* Compact single-line layout */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+
+    /* Prevent layout shifts */
+    will-change: opacity;
+    contain: layout style paint;
+}
+
+/* Universal positioning system for blocks (works for system-block and pain-label) */
+/* Default: below center */
+.system-block[data-position="bottom-center"],
+.system-block:not([data-position]),
+.pain-label[data-position="bottom-center"],
+.pain-label:not([data-position]) {
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Top-left - label above and to the left */
+.system-block[data-position="top-left"],
+.pain-label[data-position="top-left"] {
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Top-right - label above and to the right */
+.system-block[data-position="top-right"],
+.pain-label[data-position="top-right"] {
+    bottom: 20px;
+    left: 20px;
+}
+
+/* Bottom-left - label below and to the left */
+.system-block[data-position="bottom-left"],
+.pain-label[data-position="bottom-left"] {
+    top: 8px;
+    right: 8px;
+}
+
+/* Bottom-right - label below and to the right */
+.system-block[data-position="bottom-right"],
+.pain-label[data-position="bottom-right"] {
+    top: 8px;
+    left: 8px;
 }
 
 @keyframes block-appear {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
     }
 }
 
 .system-block:hover {
-    transform: translateY(-4px) scale(1.02);
     box-shadow:
         var(--shadow-lg),
         0 0 40px var(--glow-color);
+    border-color: var(--accent-primary);
 }
 
 [data-theme="light"] .system-block {
@@ -56,25 +107,73 @@
 .block-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.block-icon {
-    font-size: 32px;
-}
-
-.block-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--accent-primary);
+    gap: 6px;
     margin: 0;
 }
 
+.block-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.block-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+/* Layer-specific colors for blocks */
+[data-layer="pain"] .system-block {
+    border-color: var(--layer-pain);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--layer-pain);
+}
+
+[data-layer="pain"] .block-title {
+    color: var(--layer-pain);
+}
+
+[data-layer="nervous"] .system-block {
+    border-color: var(--layer-nervous);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--layer-nervous);
+}
+
+[data-layer="nervous"] .block-title {
+    color: var(--layer-nervous);
+}
+
+[data-layer="respiratory"] .system-block {
+    border-color: var(--layer-respiratory);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--layer-respiratory);
+}
+
+[data-layer="respiratory"] .block-title {
+    color: var(--layer-respiratory);
+}
+
+[data-layer="cardiovascular"] .system-block {
+    border-color: var(--layer-cardiovascular);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--layer-cardiovascular);
+}
+
+[data-layer="cardiovascular"] .block-title {
+    color: var(--layer-cardiovascular);
+}
+
+[data-layer="gadgets"] .system-block {
+    border-color: var(--layer-gadgets);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--layer-gadgets);
+}
+
+[data-layer="gadgets"] .block-title {
+    color: var(--layer-gadgets);
+}
+
 .block-content {
-    color: var(--text-primary);
-    line-height: 1.6;
-    font-size: 0.95rem;
+    display: none; /* Hide content in compact mode */
 }
 
 .block-type-intro {

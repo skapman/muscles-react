@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useResponsive } from '@hooks/useResponsive';
 import { useMuscle } from '@hooks/useMuscle';
 import { useApp } from '@context/AppContext';
@@ -13,23 +13,25 @@ import { Sidebar } from '@components/layout/Sidebar';
  * Handles both desktop (dual view) and mobile (swipeable) layouts
  */
 export function MuscleLayer() {
+  console.log('🏗️ MuscleLayer render');
+
   const { isMobile } = useResponsive();
   const { selectMuscle, selectedMuscle, clearSelection } = useMuscle();
   const { selectEntity } = useApp();
 
   const [currentView, setCurrentView] = useState('front');
 
-  const handleMuscleClick = (muscleId) => {
+  const handleMuscleClick = useCallback((muscleId) => {
     selectMuscle(muscleId);
-  };
+  }, [selectMuscle]);
 
-  const handleMuscleHover = (muscleId, muscleData) => {
+  const handleMuscleHover = useCallback((muscleId, muscleData) => {
     // Just for tooltip - actual hover state managed in SVGViewer
-  };
+  }, []);
 
-  const handleCloseDetails = () => {
+  const handleCloseDetails = useCallback(() => {
     clearSelection();
-  };
+  }, [clearSelection]);
 
   return (
     <div className="muscle-layer">
@@ -71,6 +73,7 @@ export function MuscleLayer() {
  * Desktop View - Dual SVG (front + back)
  */
 function DesktopView({ onMuscleClick, onMuscleHover }) {
+  console.log('🖥️ DesktopView render');
   return (
     <div className="dual-view-container">
       <div className="view-panel">
@@ -97,8 +100,10 @@ function DesktopView({ onMuscleClick, onMuscleHover }) {
  * Mobile View - Swipeable single SVG
  */
 function MobileView({ currentView, onViewChange, onMuscleClick, onMuscleHover }) {
+  console.log('📱 MobileView render', { currentView });
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleTouchStart = (e) => {
     setTouchStart(e.touches[0].clientX);
@@ -115,12 +120,22 @@ function MobileView({ currentView, onViewChange, onMuscleClick, onMuscleHover })
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentView === 'front') {
-      onViewChange('back');
-    }
+    // Swipe works in both directions - toggles between front and back
+    if (isLeftSwipe || isRightSwipe) {
+      // Start transition animation
+      setIsTransitioning(true);
 
-    if (isRightSwipe && currentView === 'back') {
-      onViewChange('front');
+      // Change view after brief fade
+      setTimeout(() => {
+        if (isLeftSwipe) {
+          onViewChange(currentView === 'front' ? 'back' : 'front');
+        } else {
+          onViewChange(currentView === 'back' ? 'front' : 'back');
+        }
+
+        // End transition
+        setTimeout(() => setIsTransitioning(false), 50);
+      }, 150);
     }
 
     // Reset
@@ -149,23 +164,13 @@ function MobileView({ currentView, onViewChange, onMuscleClick, onMuscleHover })
         />
       </div>
 
-      {/* Current view title */}
-      <div className="mobile-view-title">
-        {currentView === 'front' ? 'Вид спереди' : 'Вид сзади'}
-      </div>
-
       {/* SVG Viewer */}
-      <div className="mobile-view-wrapper">
+      <div className={`mobile-view-wrapper ${isTransitioning ? 'transitioning' : ''}`}>
         <SVGViewer
           view={currentView}
           onMuscleClick={onMuscleClick}
           onMuscleHover={onMuscleHover}
         />
-      </div>
-
-      {/* Swipe hint (can be shown on first visit) */}
-      <div className="swipe-hint">
-        ← Свайп для переключения →
       </div>
     </div>
   );

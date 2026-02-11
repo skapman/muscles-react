@@ -42,6 +42,7 @@ function App() {
       <style>{`
         .app {
           min-height: 100vh;
+          background: var(--bg-primary);
         }
 
         .app-header {
@@ -50,8 +51,8 @@ function App() {
           left: 0;
           right: 0;
           height: 60px;
-          background: var(--color-bg-secondary);
-          border-bottom: 2px solid var(--color-border);
+          background: var(--bg-secondary);
+          border-bottom: 2px solid var(--border-color);
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -67,7 +68,7 @@ function App() {
         .nav-link {
           padding: 0.75rem 1.5rem;
           background: transparent;
-          color: var(--color-text);
+          color: var(--text-primary);
           text-decoration: none;
           border-radius: 8px;
           font-size: 16px;
@@ -77,12 +78,12 @@ function App() {
         }
 
         .nav-link:hover {
-          background: var(--color-bg);
-          border-color: var(--color-border);
+          background: var(--bg-tertiary);
+          border-color: var(--border-color);
         }
 
         .nav-link.active {
-          background: var(--color-primary);
+          background: var(--accent-primary);
           color: white;
           font-weight: bold;
         }
@@ -90,6 +91,7 @@ function App() {
         .page {
           padding-top: 60px;
           min-height: 100vh;
+          background: var(--bg-primary);
         }
 
         @media (max-width: 768px) {
@@ -125,13 +127,13 @@ function LoadingFallback() {
         <div className="loading-spinner" style={{
           width: '50px',
           height: '50px',
-          border: '4px solid var(--color-border)',
-          borderTop: '4px solid var(--color-primary)',
+          border: '4px solid var(--border-color)',
+          borderTop: '4px solid var(--accent-primary)',
           borderRadius: '50%',
           animation: 'spin 1s linear infinite',
           margin: '0 auto 1rem'
         }}></div>
-        <p>Загрузка...</p>
+        <p style={{ color: 'var(--text-primary)' }}>Загрузка...</p>
       </div>
       <style>{`
         @keyframes spin {

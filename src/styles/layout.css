@@ -176,7 +176,7 @@
 .svg-wrapper svg {
     max-width: 98%;
     max-height: 98%;
-    transition: transform 0.1s ease-out;
+    transition: none;
 }
 
 /* Layer Slider */
@@ -188,8 +188,9 @@
     z-index: 150;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
-    padding: 12px 10px;
+    padding: 12px;
     background: rgba(26, 26, 46, 0.95);
     backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
@@ -215,10 +216,10 @@
     justify-content: center;
     transition: all var(--transition-normal);
     position: relative;
+    flex-shrink: 0;
 }
 
 .layer-btn:hover {
-    transform: translateX(4px) scale(1.1);
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -226,7 +227,7 @@
     border-color: var(--accent-primary);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 20px var(--glow-color);
-    transform: scale(1.15);
+    color: var(--accent-primary);
 }
 
 .layer-btn::after {

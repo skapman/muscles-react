@@ -2,15 +2,29 @@
    MUSCLES LAYER
    Muscle-specific Styles & Interactions
    ============================================ */
+/* Smooth swipe animation for muscle layer */
+.muscle-layer .mobile-view-wrapper {
+    transition: opacity 0.2s ease-out;
+}
+
+.muscle-layer .mobile-view-wrapper.transitioning {
+    opacity: 0.3;
+}
+
 
 /* Muscle interactivity */
 .muscle-interactive {
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+
+    /* TEST 2: Hardware acceleration + will-change */
+    will-change: filter, stroke, stroke-width;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .muscle-interactive:hover,

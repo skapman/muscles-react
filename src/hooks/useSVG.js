@@ -30,6 +30,24 @@ function parseSVG(svgString) {
 }
 
 /**
+ * Add auto-generated IDs to path elements (like in old project)
+ * @param {SVGElement} svgElement - SVG element
+ * @param {string} url - URL to determine view (front/back)
+ */
+function addPathIds(svgElement, url) {
+  const view = url.includes('front') ? 'front' : 'back';
+  const paths = svgElement.querySelectorAll('path');
+
+  paths.forEach((path, index) => {
+    if (!path.id) {
+      path.id = `${view}-path-${index}`;
+    }
+  });
+
+  console.log(`Added IDs to ${paths.length} paths in ${view} view`);
+}
+
+/**
  * useSVG hook - loads and manages SVG elements
  * @param {string} url - URL to SVG file
  * @returns {Object} { loading, error, svgElement, containerRef }
@@ -58,13 +76,15 @@ export function useSVG(url) {
         if (cancelled) return;
 
         const element = parseSVG(svgString);
-        setSvgElement(element);
 
-        // Inject into container if available
-        if (containerRef.current) {
-          containerRef.current.innerHTML = '';
-          containerRef.current.appendChild(element.cloneNode(true));
-        }
+        // Remove fixed width/height to make SVG responsive
+        element.removeAttribute('width');
+        element.removeAttribute('height');
+
+        // Add auto-generated IDs to path elements
+        addPathIds(element, url);
+
+        setSvgElement(element);
       } catch (err) {
         if (!cancelled) {
           console.error('Error loading SVG:', err);
@@ -84,13 +104,15 @@ export function useSVG(url) {
     };
   }, [url]);
 
-  // Re-inject SVG when container ref changes
+  // Inject SVG into container when ready
   useEffect(() => {
     if (svgElement && containerRef.current && !loading) {
+      // Always clear and inject new SVG to prevent stale content
       containerRef.current.innerHTML = '';
       containerRef.current.appendChild(svgElement.cloneNode(true));
+      console.log('✅ SVG injected:', url);
     }
-  }, [svgElement, loading]);
+  }, [svgElement, loading, url]);
 
   return {
     loading,

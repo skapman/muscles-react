@@ -1,6 +1,6 @@
 /* ============================================
    PAIN LAYER
-   Pain Points & Animations
+   Pain Points & Pulsating Circles
    ============================================ */
 
 /* Pain Points Container */
@@ -12,16 +12,6 @@
     height: 100%;
     pointer-events: none;
     z-index: 100;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.pain-points-container.fade-in {
-    opacity: 1;
-}
-
-.pain-points-container.fade-out {
-    opacity: 0;
 }
 
 /* Individual Pain Point */
@@ -43,7 +33,7 @@
     box-shadow: 0 0 20px rgba(255, 82, 82, 0.6);
 }
 
-/* Synchronized animation for all points */
+/* Synchronized pulsing animation */
 @keyframes pulse-pain-sync {
     0%, 100% {
         transform: scale(1);
@@ -55,49 +45,63 @@
     }
 }
 
-/* Callout Label - Default bottom position, CLICKABLE */
-.pain-callout {
+/* Pain Label - EXACTLY same style as system blocks */
+.pain-label {
     position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
     background: rgba(26, 26, 46, 0.95);
-    color: var(--text-primary);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(255, 82, 82, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--layer-pain);
+    border-radius: 12px;
+    padding: 8px 12px;
+    max-width: 250px;
+    box-shadow:
+        var(--shadow-lg),
+        0 0 30px var(--layer-pain);
     pointer-events: auto;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: opacity var(--transition-normal), box-shadow var(--transition-normal);
+    opacity: 0;
+    animation: block-appear 0.5s ease-out forwards;
+
+    /* Compact single-line layout - same as system blocks */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+
+    /* Prevent layout shifts */
+    will-change: opacity;
+    contain: layout style paint;
+
+    /* Text styles - SAME as .block-title */
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--layer-pain);
+    line-height: 1.4;
 }
 
-/* Top callout variant */
-.pain-callout.callout-top {
-    top: auto;
-    bottom: 10px;
-    left: 20px;
-    transform: none;
+@keyframes block-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-[data-theme="light"] .pain-callout {
+/* Legacy callout classes - now handled by data-position in blocks.css */
+/* Keeping for backwards compatibility but overridden by data-position */
+
+[data-theme="light"] .pain-label {
     background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 82, 82, 0.5);
 }
 
-.pain-point:hover .pain-callout,
-.pain-callout:hover {
-    background: rgba(255, 82, 82, 0.95);
-    color: white;
-    border-color: rgba(255, 82, 82, 0.8);
-    transform: translateX(-50%) scale(1.05);
-}
-
-.pain-callout.callout-top:hover {
-    transform: scale(1.05);
+.pain-point:hover .pain-label,
+.pain-label:hover {
+    box-shadow:
+        var(--shadow-lg),
+        0 0 40px var(--layer-pain);
+    border-color: var(--layer-pain);
 }
 
 /* Mobile Adaptations */
@@ -105,11 +109,5 @@
     .pain-circle {
         width: 24px;
         height: 24px;
-    }
-
-    .pain-callout {
-        font-size: 12px;
-        padding: 6px 12px;
-        top: 32px;
     }
 }

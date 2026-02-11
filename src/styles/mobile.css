@@ -102,29 +102,36 @@
         overflow: hidden;
     }
 
-    /* View indicators */
+    /* View indicators - moved down for better visibility */
     .view-indicators {
         position: absolute;
-        top: 20px;
+        bottom: 40px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        gap: 8px;
+        gap: 12px;
         z-index: 10;
+        padding: 8px 16px;
+        background: rgba(26, 26, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
         transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .view-indicator {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.3);
         transition: all 0.3s ease;
+        cursor: pointer;
     }
 
     .view-indicator.active {
         background: var(--accent-cyan);
         box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        width: 12px;
+        height: 12px;
     }
 
     /* Swipeable wrapper */
@@ -155,7 +162,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 60px 20px 20px;
     }
 
     .mobile-view-panel .svg-wrapper svg {
@@ -163,6 +170,78 @@
         max-height: 100%;
         width: auto;
         height: auto;
+        object-fit: contain;
+    }
+
+    /* Fix SVG positioning for ALL layers */
+    .muscle-layer .svg-wrapper,
+    .generic-layer .svg-wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 80px 0 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none; /* Disable pointer events on wrapper */
+    }
+
+    /* Re-enable pointer events on SVG */
+    .muscle-layer .svg-wrapper svg,
+    .generic-layer .svg-wrapper svg {
+        pointer-events: auto;
+    }
+
+    .muscle-layer .svg-wrapper svg,
+    .generic-layer .svg-wrapper svg {
+        max-width: 95vw !important;
+        max-height: 80vh !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        transform: none !important;
+        transition: none !important;
+        display: block !important;
+    }
+
+    .muscle-layer .svg-wrapper svg {
+        cursor: pointer !important;
+    }
+
+    /* Disable transitions on all SVG children on mobile */
+    .muscle-layer .svg-wrapper svg *,
+    .generic-layer .svg-wrapper svg * {
+        transition: none !important;
+    }
+
+    /* Chrome-specific fixes for tap highlight flash */
+    .muscle-layer .svg-wrapper,
+    .muscle-layer .svg-wrapper svg,
+    .muscle-layer .svg-wrapper svg *,
+    .generic-layer .svg-wrapper,
+    .generic-layer .svg-wrapper svg,
+    .generic-layer .svg-wrapper svg * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+    }
+
+    /* Force hardware acceleration on Chrome */
+    .muscle-layer .svg-wrapper svg,
+    .generic-layer .svg-wrapper svg {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+    }
+
+    /* Override graph styles for muscle SVG */
+    .muscle-layer svg {
+        cursor: pointer !important;
     }
 
     /* Bottom Sheet */
