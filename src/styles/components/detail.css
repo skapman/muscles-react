@@ -1,0 +1,122 @@
+/* ============================================
+   DETAIL VIEW
+   Universal Detail View Component
+   ============================================ */
+
+/* Full Screen Detail View */
+.pain-detail-view,
+.detail-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+}
+
+.pain-detail-view.visible,
+.detail-view.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Detail View Header */
+.pain-detail-header,
+.detail-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+}
+
+/* Back Button - Universal */
+.pain-detail-back,
+.detail-back {
+    background: rgba(26, 26, 46, 0.9);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-bottom: 16px;
+}
+
+[data-theme="light"] .pain-detail-back,
+[data-theme="light"] .detail-back {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.pain-detail-back:hover,
+.detail-back:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+}
+
+/* Detail View Title */
+.pain-detail-title,
+.detail-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Detail View Content */
+.pain-detail-content,
+.detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.pain-detail-content h3,
+.detail-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.pain-detail-content p,
+.detail-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* Mobile Adaptations */
+@media (max-width: 768px) {
+    .pain-detail-title,
+    .detail-title {
+        font-size: 24px;
+    }
+
+    .pain-detail-content,
+    .detail-content {
+        padding: 24px 16px;
+    }
+
+    .pain-detail-content h3,
+    .detail-content h3 {
+        font-size: 20px;
+    }
+
+    .pain-detail-content p,
+    .detail-content p {
+        font-size: 16px;
+    }
+}

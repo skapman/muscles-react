@@ -1,0 +1,18 @@
+/* Main CSS entry point - imports all style modules */
+
+/* Base styles and variables */
+@import './base.css';
+@import './themes.css';
+@import './layout.css';
+@import './mobile.css';
+
+/* Component styles */
+@import './components/buttons.css';
+@import './components/blocks.css';
+@import './components/detail.css';
+@import './components/tooltip.css';
+@import './components/graph.css';
+
+/* Layer-specific styles */
+@import './layers/muscles.css';
+@import './layers/pain.css';

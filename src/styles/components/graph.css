@@ -1,0 +1,435 @@
+/* ============================================
+   GRAPH VISUALIZATION STYLES
+   Relationship graph with D3.js
+   ============================================ */
+
+:root {
+    /* Graph Visual Parameters */
+    --graph-edge-width: 2;
+    --graph-edge-opacity: 0.15;
+    --graph-edge-color: 255, 255, 255;  /* RGB for rgba() */
+
+    --graph-node-stroke-width: 3;
+    --graph-node-stroke-color: #ffffff;
+
+    --graph-label-font-weight: 300;
+    --graph-label-font-size: 11px;
+    --graph-label-color: #ffffff;
+    --graph-label-shadow: rgba(0, 0, 0, 0.8);
+
+    /* Node Colors (matching existing palette) */
+    --graph-color-goals: #4caf50;
+    --graph-color-exercises: #00d4ff;
+    --graph-color-muscles: #ff5252;
+    --graph-color-pain: #f44336;
+}
+
+.relationship-graph-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Graph Controls */
+.graph-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Threshold Slider */
+.threshold-slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.threshold-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.threshold-slider {
+    width: 200px;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, #e0e0e0 0%, #2196F3 100%);
+    border-radius: 3px;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+.threshold-slider:hover {
+    opacity: 0.9;
+}
+
+.threshold-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2196F3;
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.threshold-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.6);
+}
+
+.threshold-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #2196F3;
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.threshold-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.6);
+}
+
+.threshold-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2196F3;
+    text-align: center;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 48px;
+}
+
+.filter-btn:hover {
+    border-color: #2196F3;
+    background: rgba(33, 150, 243, 0.05);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    border-color: #2196F3;
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.filter-icon {
+    font-size: 20px;
+}
+
+.filter-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+}
+
+.filter-btn.active .filter-count {
+    color: #2196F3;
+}
+
+/* Graph Canvas */
+.graph-canvas-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.graph-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    transition: opacity 0.3s ease;
+}
+
+.graph-canvas:active {
+    cursor: grabbing;
+}
+
+/* Bottom Sheet */
+.graph-bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.graph-bottom-sheet.active {
+    transform: translateY(0);
+}
+
+.sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    margin: 12px auto;
+    cursor: grab;
+}
+
+.sheet-content {
+    padding: 0 20px 20px;
+}
+
+.node-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.node-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.node-icon {
+    font-size: 32px;
+}
+
+.node-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.node-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: -8px 0 0;
+}
+
+.node-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.btn-focus {
+    padding: 12px 24px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-focus:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.btn-focus:active {
+    transform: translateY(0);
+}
+
+/* Legend */
+.graph-legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Warning */
+.graph-warning {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 152, 0, 0.95);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(255, 152, 0, 0.3);
+    z-index: 50;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .graph-controls {
+        top: 10px;
+        left: 10px;
+        padding: 12px;
+        max-width: calc(100% - 20px);
+    }
+
+    .threshold-slider {
+        width: 150px;
+    }
+
+    .filter-buttons {
+        gap: 6px;
+    }
+
+    .filter-btn {
+        min-width: 44px;
+        padding: 6px 10px;
+    }
+
+    .filter-icon {
+        font-size: 18px;
+    }
+
+    .graph-legend {
+        top: auto;
+        bottom: 20px;
+        right: 10px;
+        left: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .legend-item {
+        font-size: 12px;
+    }
+
+    .legend-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Desktop Enhancements */
+@media (min-width: 769px) {
+    .graph-controls {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .threshold-slider-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .threshold-slider {
+        width: 250px;
+    }
+
+    .filter-btn {
+        padding: 10px 14px;
+    }
+
+    .filter-icon {
+        font-size: 22px;
+    }
+}
+
+/* Smooth Transitions for All Interactive Elements */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button, .filter-btn, .threshold-slider::-webkit-slider-thumb, .threshold-slider::-moz-range-thumb {
+    transition: all 0.2s ease;
+}
+
+.graph-canvas, .graph-bottom-sheet, .graph-controls, .graph-legend {
+    transition: all 0.3s ease;
+}
