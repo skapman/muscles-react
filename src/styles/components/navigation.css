@@ -1,0 +1,77 @@
+/* ============================================
+   NAVIGATION COMPONENTS STYLES
+   Burger Menu, Icons, Navigation Elements
+   ============================================ */
+
+/* Ensure consistent font family across all navigation */
+.burger-menu,
+.burger-icon,
+.menu-link,
+.theme-toggle-menu {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for all interactive elements */
+.burger-icon,
+.menu-link,
+.theme-toggle-menu,
+.theme-switch-track,
+.theme-switch-thumb {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Consistent hover states */
+.menu-link:hover,
+.theme-toggle-menu:hover {
+  transition-duration: 0.2s;
+}
+
+/* Active state consistency */
+.menu-link.active {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Icon sizing consistency */
+.menu-icon,
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scrollbar styling for menu */
+.burger-menu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.burger-menu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.burger-menu-content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.burger-menu-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus states for accessibility */
+.burger-icon:focus-visible,
+.menu-link:focus-visible,
+.theme-toggle-menu:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline for mouse users */
+.burger-icon:focus:not(:focus-visible),
+.menu-link:focus:not(:focus-visible),
+.theme-toggle-menu:focus:not(:focus-visible) {
+  outline: none;
+}

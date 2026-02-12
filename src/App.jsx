@@ -1,111 +1,80 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import { NavigationProvider } from '@context/NavigationContext'
+import { OnboardingProvider } from '@context/OnboardingContext'
+import { BurgerIcon } from '@components/layout/BurgerIcon'
+import { BurgerMenu } from '@components/layout/BurgerMenu'
+import { OnboardingModal } from '@components/onboarding/OnboardingModal'
 import { ThemeToggle } from '@components/common/ThemeToggle'
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('@pages/HomePage').then(module => ({ default: module.HomePage })))
 const GraphPage = lazy(() => import('@pages/GraphPage').then(module => ({ default: module.GraphPage })))
+const GoalsHub = lazy(() => import('@pages/GoalsHub').then(module => ({ default: module.GoalsHub })))
+const ExercisesHub = lazy(() => import('@pages/ExercisesHub').then(module => ({ default: module.ExercisesHub })))
+const FavoritesView = lazy(() => import('@pages/FavoritesView').then(module => ({ default: module.FavoritesView })))
+const SettingsView = lazy(() => import('@pages/SettingsView').then(module => ({ default: module.SettingsView })))
+const AboutView = lazy(() => import('@pages/AboutView').then(module => ({ default: module.AboutView })))
 
 function App() {
-  const location = useLocation()
-
   return (
-    <div className="app">
-      {/* Header with Navigation */}
-      <header className="app-header">
-        <nav className="app-nav">
-          <Link
-            to="/"
-            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-          >
-            🏋️ Мышцы
-          </Link>
-          <Link
-            to="/graph"
-            className={`nav-link ${location.pathname === '/graph' ? 'active' : ''}`}
-          >
-            📊 Граф
-          </Link>
-        </nav>
+    <OnboardingProvider>
+      <NavigationProvider>
+        <div className="app">
+          {/* Onboarding Modal */}
+          <OnboardingModal />
 
-        <ThemeToggle />
-      </header>
+          {/* Burger Menu Navigation */}
+          <BurgerIcon />
+          <BurgerMenu />
 
-      {/* Routes with Suspense for lazy loading */}
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/graph" element={<GraphPage />} />
-        </Routes>
-      </Suspense>
+          {/* Temporary: Keep old ThemeToggle visible */}
+          <div className="temp-theme-toggle">
+            <ThemeToggle />
+          </div>
 
-      <style>{`
-        .app {
-          min-height: 100vh;
-          background: var(--bg-primary);
-        }
+        {/* Routes with Suspense for lazy loading */}
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/graph" element={<GraphPage />} />
+            <Route path="/goals" element={<GoalsHub />} />
+            <Route path="/exercises" element={<ExercisesHub />} />
+            <Route path="/favorites" element={<FavoritesView />} />
+            <Route path="/settings" element={<SettingsView />} />
+            <Route path="/about" element={<AboutView />} />
+          </Routes>
+        </Suspense>
 
-        .app-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 60px;
-          background: var(--bg-secondary);
-          border-bottom: 2px solid var(--border-color);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 2rem;
-          z-index: 1000;
-        }
-
-        .app-nav {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .nav-link {
-          padding: 0.75rem 1.5rem;
-          background: transparent;
-          color: var(--text-primary);
-          text-decoration: none;
-          border-radius: 8px;
-          font-size: 16px;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          border: 2px solid transparent;
-        }
-
-        .nav-link:hover {
-          background: var(--bg-tertiary);
-          border-color: var(--border-color);
-        }
-
-        .nav-link.active {
-          background: var(--accent-primary);
-          color: white;
-          font-weight: bold;
-        }
-
-        .page {
-          padding-top: 60px;
-          min-height: 100vh;
-          background: var(--bg-primary);
-        }
-
-        @media (max-width: 768px) {
-          .app-header {
-            padding: 0 1rem;
+        <style>{`
+          .app {
+            min-height: 100vh;
+            background: var(--bg-primary);
           }
 
-          .nav-link {
-            padding: 0.5rem 1rem;
-            font-size: 14px;
+          /* Temporary ThemeToggle positioning (top-right) */
+          .temp-theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
           }
-        }
-      `}</style>
-    </div>
+
+          .page {
+            min-height: 100vh;
+            background: var(--bg-primary);
+          }
+
+          @media (max-width: 768px) {
+            .temp-theme-toggle {
+              top: 16px;
+              right: 16px;
+            }
+          }
+        `}</style>
+        </div>
+      </NavigationProvider>
+    </OnboardingProvider>
   )
 }
 
