@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useResponsive } from '@hooks/useResponsive';
 import { useGraphData } from '@hooks/useGraphData';
-import { GraphCanvas } from './GraphCanvas';
+import { GraphSVG } from './GraphSVG';
 import { GraphControls } from './GraphControls';
+import '@styles/components/graph-svg.css';
 
 /**
  * RelationshipGraph Component
@@ -157,7 +158,7 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
           height: '100%'
         }}
       >
-        <GraphCanvas
+        <GraphSVG
           graphData={graphData}
           width={canvasSize.width}
           height={canvasSize.height}
