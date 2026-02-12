@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useResponsive } from '@hooks/useResponsive';
 import { useGraphData } from '@hooks/useGraphData';
 import { GraphCanvas } from './GraphCanvas';
 import { GraphControls } from './GraphControls';
-import { BottomSheet } from '@components/common/BottomSheet';
 
 /**
  * RelationshipGraph Component
@@ -22,23 +21,96 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
     setThreshold
   } = useGraphData(entityType, entityId, depth);
 
-  const [selectedNode, setSelectedNode] = useState(null);
   const [hoveredNode, setHoveredNode] = useState(null);
+  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 600 });
+  const [sizeReady, setSizeReady] = useState(false);
+  const containerRef = useRef(null);
+  const canvasContainerRef = useRef(null);
 
-  // Graph dimensions
-  const graphWidth = isMobile ? screenWidth : screenWidth - 400;
-  const graphHeight = isMobile ? 500 : 600;
+  // Measure canvas container size using ResizeObserver
+  // Only run after graphData is loaded and component is fully rendered
+  useEffect(() => {
+    if (!graphData.nodes.length) {
+      console.log('Skipping size measurement - no graph data yet');
+      return;
+    }
+
+    console.log('=== Canvas size measurement effect started ===');
+    console.log('canvasContainerRef.current:', canvasContainerRef.current);
+
+    if (!canvasContainerRef.current) {
+      console.warn('canvasContainerRef.current is null!');
+      return;
+    }
+
+    const updateSize = (entries) => {
+      if (!entries || entries.length === 0) return;
+
+      const entry = entries[0];
+      const { width, height } = entry.contentRect;
+
+      // Only update if dimensions are valid
+      if (width > 0 && height > 0) {
+        console.log('✅ Canvas container size (ResizeObserver):', width, 'x', height);
+        setCanvasSize({
+          width: Math.floor(width),
+          height: Math.floor(height)
+        });
+        setSizeReady(true); // Mark size as ready
+      } else {
+        console.warn('Invalid dimensions from ResizeObserver:', width, 'x', height);
+      }
+    };
+
+    // Manual measurement function
+    const measureManually = () => {
+      if (canvasContainerRef.current) {
+        const rect = canvasContainerRef.current.getBoundingClientRect();
+        console.log('✅ Canvas container size (manual):', rect.width, 'x', rect.height);
+        console.log('Window height:', window.innerHeight);
+        if (rect.width > 0 && rect.height > 0) {
+          setCanvasSize({
+            width: Math.floor(rect.width),
+            height: Math.floor(rect.height)
+          });
+          setSizeReady(true); // Mark size as ready
+        } else {
+          console.warn('Invalid dimensions from manual measurement:', rect.width, 'x', rect.height);
+        }
+      } else {
+        console.warn('canvasContainerRef.current is null in measureManually!');
+      }
+    };
+
+    // ResizeObserver automatically detects size changes
+    const resizeObserver = new ResizeObserver(updateSize);
+    resizeObserver.observe(canvasContainerRef.current);
+    console.log('ResizeObserver attached');
+
+    // Force initial measurement after a short delay
+    const timer = setTimeout(() => {
+      console.log('Timeout fired, measuring manually...');
+      measureManually();
+    }, 100);
+
+    // Fallback for window resize
+    window.addEventListener('resize', measureManually);
+
+    return () => {
+      clearTimeout(timer);
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', measureManually);
+      console.log('=== Canvas size measurement effect cleaned up ===');
+    };
+  }, [graphData.nodes.length]); // Re-run when graph data loads
 
   const handleNodeClick = (node) => {
-    setSelectedNode(node);
+    // Отключено - не показываем панель
+    console.log('Node clicked:', node.data.title || node.data.name);
   };
 
   const handleNodeHover = (node) => {
     setHoveredNode(node);
-  };
-
-  const handleCloseDetails = () => {
-    setSelectedNode(null);
   };
 
   if (loading) {
@@ -59,7 +131,11 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
   }
 
   return (
-    <div className="relationship-graph-container">
+    <div className="relationship-graph-container" ref={containerRef} style={{
+      position: 'relative',
+      width: '100%',
+      height: '100%'
+    }}>
       {/* Controls */}
       <GraphControls
         threshold={threshold}
@@ -70,18 +146,34 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
       />
 
       {/* Graph Canvas */}
-      <div className="graph-canvas-container">
+      <div
+        ref={canvasContainerRef}
+        className="graph-canvas-container"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        }}
+      >
         <GraphCanvas
           graphData={graphData}
-          width={graphWidth}
-          height={graphHeight}
+          width={canvasSize.width}
+          height={canvasSize.height}
+          sizeReady={sizeReady}
           onNodeClick={handleNodeClick}
           onNodeHover={handleNodeHover}
         />
       </div>
 
-      {/* Legend */}
-      <div className="graph-legend">
+      {/* Legend - positioned over canvas at bottom */}
+      <div className="graph-legend" style={{
+        position: 'absolute',
+        bottom: '20px',
+        right: '20px',
+        top: 'auto'
+      }}>
         <div className="legend-item">
           <span className="legend-dot" style={{ backgroundColor: '#4caf50' }} />
           <span>🎯 Цели</span>
@@ -100,73 +192,9 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
         </div>
       </div>
 
-      {/* Node Details (Mobile: Bottom Sheet, Desktop: Sidebar) */}
-      {isMobile ? (
-        <BottomSheet
-          isOpen={!!selectedNode}
-          onClose={handleCloseDetails}
-        >
-          <NodeDetails node={selectedNode} />
-        </BottomSheet>
-      ) : (
-        selectedNode && (
-          <div className="graph-sidebar">
-            <button
-              className="close-btn"
-              onClick={handleCloseDetails}
-            >
-              ×
-            </button>
-            <NodeDetails node={selectedNode} />
-          </div>
-        )
-      )}
+      {/* Node Details - отключено */}
     </div>
   );
 }
 
-/**
- * NodeDetails Component
- * Displays detailed information about a node
- */
-function NodeDetails({ node }) {
-  if (!node) return null;
-
-  const typeIcons = {
-    goals: '🎯',
-    exercises: '🏋️',
-    muscles: '💪',
-    pain: '⚠️'
-  };
-
-  const data = node.data;
-
-  return (
-    <div className="node-details">
-      <div className="node-header">
-        <span className="node-icon">{typeIcons[node.type] || '•'}</span>
-        <h3>{data.title || data.name || 'Unknown'}</h3>
-      </div>
-
-      {(data.titleEn || data.nameEn) && (
-        <p className="node-subtitle">{data.titleEn || data.nameEn}</p>
-      )}
-
-      <div className="node-description">
-        {data.description || data.content || data.function || 'No description available'}
-      </div>
-
-      {data.category && (
-        <div className="node-meta">
-          <strong>Категория:</strong> {data.category}
-        </div>
-      )}
-
-      {data.group && (
-        <div className="node-meta">
-          <strong>Группа:</strong> {data.group}
-        </div>
-      )}
-    </div>
-  );
-}
+// NodeDetails component removed - not needed

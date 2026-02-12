@@ -11,22 +11,19 @@ export function GraphPage() {
 
   return (
     <div className="page graph-page">
-      <div className="page-header">
+      <header className="graph-header">
         <h1>📊 Граф Связей</h1>
-        <p>Визуализация связей между целями, упражнениями, мышцами и болями</p>
-      </div>
 
-      <div className="goal-selector">
-        <h3>Выберите цель:</h3>
-        <div className="goal-buttons">
+        <div className="goal-selector">
           <button
             className={`goal-btn ${selectedGoal === 'bench-100kg' && !showAllGoals ? 'active' : ''}`}
             onClick={() => {
               setSelectedGoal('bench-100kg');
               setShowAllGoals(false);
             }}
+            title="Жим 100кг"
           >
-            🏋️ Жим 100кг
+            🏋️
           </button>
           <button
             className={`goal-btn ${selectedGoal === 'pullups-20' && !showAllGoals ? 'active' : ''}`}
@@ -34,8 +31,9 @@ export function GraphPage() {
               setSelectedGoal('pullups-20');
               setShowAllGoals(false);
             }}
+            title="20 подтягиваний"
           >
-            💪 20 подтягиваний
+            💪
           </button>
           <button
             className={`goal-btn ${selectedGoal === 'pain-relief' && !showAllGoals ? 'active' : ''}`}
@@ -43,17 +41,19 @@ export function GraphPage() {
               setSelectedGoal('pain-relief');
               setShowAllGoals(false);
             }}
+            title="Избавиться от боли"
           >
-            ⚠️ Избавиться от боли
+            ⚠️
           </button>
           <button
             className={`goal-btn ${showAllGoals ? 'active' : ''}`}
             onClick={() => setShowAllGoals(true)}
+            title="Все цели"
           >
-            🎯 Все цели
+            🎯
           </button>
         </div>
-      </div>
+      </header>
 
       <div className="graph-container">
         <RelationshipGraph
@@ -65,64 +65,84 @@ export function GraphPage() {
 
       <style>{`
         .graph-page {
-          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+          padding: 0;
         }
 
-        .page-header {
-          margin-bottom: 2rem;
+        .graph-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+          padding: 1rem 2rem;
+          background: var(--bg-secondary);
+          border-bottom: 1px solid var(--border-color);
         }
 
-        .page-header h1 {
-          margin: 0 0 0.5rem 0;
-        }
-
-        .page-header p {
+        .graph-header h1 {
           margin: 0;
-          opacity: 0.8;
+          font-size: 1.5rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
         }
 
         .goal-selector {
-          margin-bottom: 2rem;
-        }
-
-        .goal-selector h3 {
-          margin: 0 0 1rem 0;
-        }
-
-        .goal-buttons {
           display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
+          gap: 0.5rem;
         }
 
         .goal-btn {
-          padding: 12px 24px;
-          background: var(--color-bg-secondary);
-          color: var(--color-text);
-          border: 2px solid var(--color-border);
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          background: var(--bg-tertiary);
+          color: var(--text-primary);
+          border: 1px solid var(--border-color);
           border-radius: 8px;
           cursor: pointer;
-          font-size: 16px;
-          transition: all 0.3s ease;
+          font-size: 20px;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .goal-btn:hover {
-          background: var(--color-primary);
-          color: white;
+          background: var(--bg-primary);
+          border-color: var(--accent-primary);
+          transform: translateY(-2px);
         }
 
         .goal-btn.active {
-          background: var(--color-primary);
-          color: white;
-          font-weight: bold;
+          background: var(--accent-primary);
+          border-color: var(--accent-primary);
+          transform: scale(1.05);
         }
 
         .graph-container {
-          background: var(--color-bg-secondary);
-          border: 2px solid var(--color-border);
-          border-radius: 12px;
-          padding: 1rem;
-          min-height: 600px;
+          flex: 1;
+          background: var(--bg-primary);
+          overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+          .graph-header {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+          }
+
+          .graph-header h1 {
+            font-size: 1.3rem;
+          }
+
+          .goal-btn {
+            width: 44px;
+            height: 44px;
+            font-size: 22px;
+          }
         }
       `}</style>
     </div>
