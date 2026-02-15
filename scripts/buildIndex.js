@@ -2,10 +2,45 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { fileURLToPath } from 'url'
+import musclesDictionary from '../src/data/muscles-dictionary.json' with { type: 'json' }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const contentDir = path.join(__dirname, '../content')
 const outputPath = path.join(__dirname, '../src/data/content-index.json')
+
+/**
+ * Enrich muscle entry with data from dictionary
+ */
+function enrichMuscleEntry(entry) {
+  const dictEntry = musclesDictionary[entry.id]
+  if (!dictEntry) {
+    console.warn(`   ⚠️  Muscle "${entry.id}" not found in muscles-dictionary.json`)
+    return entry
+  }
+
+  // Get muscle relations from dictionary
+  const muscleRelations = dictEntry.related?.muscles || { synergists: [], antagonists: [] }
+
+  return {
+    ...entry,
+    titleEn: dictEntry.titleEn,
+    titleLatin: dictEntry.titleLatin,
+    synonyms: dictEntry.synonyms,
+    groupId: dictEntry.groupId,
+    groupTitle: dictEntry.groupTitle,
+    groupTitleEn: dictEntry.groupTitleEn,
+    regionTitle: dictEntry.regionTitle,
+    regionTitleEn: dictEntry.regionTitleEn,
+    zoneTitle: dictEntry.zoneTitle,
+    zoneTitleEn: dictEntry.zoneTitleEn,
+    svgIds: dictEntry.svgIds,
+    // Automatically populate muscle relations from dictionary
+    related: {
+      ...entry.related,
+      muscles: muscleRelations
+    }
+  }
+}
 
 /**
  * Build content index from MDX files
@@ -27,43 +62,62 @@ function buildIndex() {
       continue
     }
 
-    const files = fs.readdirSync(typeDir).filter(f => f.endsWith('.mdx'))
+    // Check for draft/ and published/ subdirectories
+    const publishedDir = path.join(typeDir, 'published')
+    const draftDir = path.join(typeDir, 'draft')
 
-    if (files.length === 0) {
-      console.log(`📁 ${type}/ - no files`)
-      continue
+    const dirs = []
+    if (fs.existsSync(publishedDir)) dirs.push({ path: publishedDir, label: 'published' })
+    if (fs.existsSync(draftDir)) dirs.push({ path: draftDir, label: 'draft' })
+
+    // Fallback to reading directly from type directory if no subdirs
+    if (dirs.length === 0) {
+      dirs.push({ path: typeDir, label: '' })
     }
 
-    console.log(`📁 ${type}/ - ${files.length} file(s)`)
+    let typeFileCount = 0
 
-    for (const file of files) {
-      const filePath = path.join(typeDir, file)
-      const content = fs.readFileSync(filePath, 'utf-8')
-      const { data: frontmatter } = matter(content)
+    for (const dir of dirs) {
+      const files = fs.readdirSync(dir.path).filter(f => f.endsWith('.mdx'))
 
-      // Skip drafts
-      if (frontmatter.status !== 'published') {
-        console.log(`   ⏭️  Skipped (draft): ${file}`)
-        continue
+      if (files.length === 0) continue
+
+      for (const file of files) {
+        const filePath = path.join(dir.path, file)
+        const content = fs.readFileSync(filePath, 'utf-8')
+        const { data: frontmatter } = matter(content)
+
+        // Validate required fields
+        if (!frontmatter.id || !frontmatter.type) {
+          console.log(`   ❌ Missing id or type: ${file}`)
+          continue
+        }
+
+        const slug = file.replace('.mdx', '')
+
+        let entry = {
+          ...frontmatter,
+          slug,
+          path: `${type}/${slug}`,
+          related: frontmatter.related || {}
+        }
+
+        // Enrich muscle entries with dictionary data
+        if (frontmatter.type === 'muscle') {
+          entry = enrichMuscleEntry(entry)
+        }
+
+        index[frontmatter.id] = entry
+        typeFileCount++
+        totalFiles++
+        console.log(`   ✓ ${frontmatter.id}`)
       }
+    }
 
-      // Validate required fields
-      if (!frontmatter.id || !frontmatter.type) {
-        console.log(`   ❌ Missing id or type: ${file}`)
-        continue
-      }
-
-      const slug = file.replace('.mdx', '')
-
-      index[frontmatter.id] = {
-        ...frontmatter,
-        slug,
-        path: `${type}/${slug}`,
-        related: frontmatter.related || {}
-      }
-
-      totalFiles++
-      console.log(`   ✓ ${frontmatter.id}`)
+    if (typeFileCount > 0) {
+      console.log(`📁 ${type}/ - ${typeFileCount} file(s)`)
+    } else {
+      console.log(`📁 ${type}/ - no published files`)
     }
   }
 

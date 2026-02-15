@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { fileURLToPath } from 'url'
+import musclesDictionary from '../src/data/muscles-dictionary.json' with { type: 'json' }
+import tagsDictionary from '../src/data/tags-dictionary.json' with { type: 'json' }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const contentDir = path.join(__dirname, '../content')
@@ -17,6 +19,81 @@ const REQUIRED_FIELDS = {
   exercise: ['id', 'type', 'title', 'titleShort', 'tags', 'status'],
   goal:     ['id', 'type', 'title', 'titleShort', 'tags', 'status'],
   pain:     ['id', 'type', 'title', 'titleShort', 'tags', 'status'],
+}
+
+/**
+ * Validate that muscle exists in dictionary
+ */
+function validateMuscleInDictionary(id, prefix, errors) {
+  if (!musclesDictionary[id]) {
+    errors.push(`${prefix} muscle "${id}" not found in muscles-dictionary.json`)
+  }
+}
+
+/**
+ * Validate muscle relation IDs exist in dictionary
+ */
+function validateMuscleRelationIds(muscles, prefix, errors) {
+  if (!muscles) return
+
+  const ids = [
+    ...(muscles.synergists || []),
+    ...(muscles.antagonists || [])
+  ]
+
+  for (const id of ids) {
+    if (!musclesDictionary[id]) {
+      errors.push(`${prefix} related muscle "${id}" not found in muscles-dictionary.json`)
+    }
+  }
+}
+
+/**
+ * Validate tags against dictionary
+ */
+function validateTags(tags, prefix, errors) {
+  if (!tags || !Array.isArray(tags)) return
+
+  for (const tag of tags) {
+    if (!tagsDictionary[tag]) {
+      errors.push(`${prefix} tag "${tag}" not found in tags-dictionary.json`)
+    }
+  }
+}
+
+/**
+ * Get all MDX files from a type directory (including draft/published subdirs)
+ */
+function getAllMDXFiles(typeDir) {
+  const files = []
+
+  // Check for draft/ and published/ subdirectories
+  const publishedDir = path.join(typeDir, 'published')
+  const draftDir = path.join(typeDir, 'draft')
+
+  if (fs.existsSync(publishedDir)) {
+    const publishedFiles = fs.readdirSync(publishedDir)
+      .filter(f => f.endsWith('.mdx'))
+      .map(f => ({ file: f, path: path.join(publishedDir, f), subdir: 'published' }))
+    files.push(...publishedFiles)
+  }
+
+  if (fs.existsSync(draftDir)) {
+    const draftFiles = fs.readdirSync(draftDir)
+      .filter(f => f.endsWith('.mdx'))
+      .map(f => ({ file: f, path: path.join(draftDir, f), subdir: 'draft' }))
+    files.push(...draftFiles)
+  }
+
+  // Fallback to reading directly from type directory if no subdirs
+  if (files.length === 0 && fs.existsSync(typeDir)) {
+    const directFiles = fs.readdirSync(typeDir)
+      .filter(f => f.endsWith('.mdx'))
+      .map(f => ({ file: f, path: path.join(typeDir, f), subdir: '' }))
+    files.push(...directFiles)
+  }
+
+  return files
 }
 
 /**
@@ -42,13 +119,12 @@ function validateFrontmatter() {
     const typeDir = path.join(contentDir, type)
     if (!fs.existsSync(typeDir)) continue
 
-    const files = fs.readdirSync(typeDir).filter(f => f.endsWith('.mdx'))
+    const files = getAllMDXFiles(typeDir)
 
-    for (const file of files) {
-      const filePath = path.join(typeDir, file)
+    for (const { file, path: filePath, subdir } of files) {
       const content = fs.readFileSync(filePath, 'utf-8')
       const { data: fm } = matter(content)
-      const prefix = `[${type}/${file}]`
+      const prefix = subdir ? `[${type}/${subdir}/${file}]` : `[${type}/${file}]`
 
       // CRITICAL: Check type
       if (!VALID_TYPES.includes(fm.type)) {
@@ -97,6 +173,19 @@ function validateFrontmatter() {
         criticalErrors.push(`${prefix} tags must be an array`)
       }
 
+      // CRITICAL: Validate muscle exists in dictionary
+      if (fm.type === 'muscle') {
+        validateMuscleInDictionary(fm.id, prefix, criticalErrors)
+      }
+
+      // CRITICAL: Validate muscle relations exist in dictionary
+      if (fm.type === 'muscle' && fm.related?.muscles) {
+        validateMuscleRelationIds(fm.related.muscles, prefix, criticalErrors)
+      }
+
+      // CRITICAL: Validate tags against dictionary
+      validateTags(fm.tags, prefix, criticalErrors)
+
       // WARNING: Missing image
       if (!fm.image) {
         warnings.push(`${prefix} missing image field (article will display without image)`)
@@ -130,6 +219,28 @@ function validateLinks() {
     if (!entry.related) continue
 
     for (const [relType, relIds] of Object.entries(entry.related)) {
+      // Special handling for muscles which has synergists/antagonists structure
+      if (relType === 'muscles' && typeof relIds === 'object' && !Array.isArray(relIds)) {
+        // Validate synergists
+        if (relIds.synergists && Array.isArray(relIds.synergists)) {
+          for (const relId of relIds.synergists) {
+            if (!allIds.has(relId)) {
+              warnings.push(`[${id}] → related.muscles.synergists contains non-existent id: "${relId}"`)
+            }
+          }
+        }
+        // Validate antagonists
+        if (relIds.antagonists && Array.isArray(relIds.antagonists)) {
+          for (const relId of relIds.antagonists) {
+            if (!allIds.has(relId)) {
+              warnings.push(`[${id}] → related.muscles.antagonists contains non-existent id: "${relId}"`)
+            }
+          }
+        }
+        continue
+      }
+
+      // Standard array validation for other relation types
       if (!Array.isArray(relIds)) {
         criticalErrors.push(`[${id}] related.${relType} is not an array`)
         continue
@@ -173,12 +284,11 @@ function validateContentLinks() {
     const typeDir = path.join(contentDir, type)
     if (!fs.existsSync(typeDir)) continue
 
-    const files = fs.readdirSync(typeDir).filter(f => f.endsWith('.mdx'))
+    const files = getAllMDXFiles(typeDir)
 
-    for (const file of files) {
-      const filePath = path.join(typeDir, file)
+    for (const { file, path: filePath, subdir } of files) {
       const content = fs.readFileSync(filePath, 'utf-8')
-      const prefix = `[${type}/${file}]`
+      const prefix = subdir ? `[${type}/${subdir}/${file}]` : `[${type}/${file}]`
 
       let match
       while ((match = contentLinkRegex.exec(content)) !== null) {

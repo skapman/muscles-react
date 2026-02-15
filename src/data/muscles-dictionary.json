@@ -1,0 +1,1375 @@
+{
+  "sternocleidomastoid": {
+    "id": "sternocleidomastoid",
+    "title": "Грудино-ключично-сосцевидная мышца",
+    "titleShort": "Грудино-ключично-сосцевидная",
+    "titleEn": "Sternocleidomastoid",
+    "titleLatin": "Musculus sternocleidomastoideus",
+    "synonyms": [
+      "грудино-ключично-сосцевидная",
+      "кивательная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Шея",
+    "regionTitleEn": "Neck",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "sternocleidomastoid-left",
+      "sternocleidomastoid-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "splenius",
+          "trapezius-upper"
+        ],
+        "antagonists": [
+          "splenius"
+        ]
+      }
+    }
+  },
+  "splenius": {
+    "id": "splenius",
+    "title": "Ременная мышца",
+    "titleShort": "Ременная",
+    "titleEn": "Splenius",
+    "titleLatin": "Musculus splenius",
+    "synonyms": [
+      "ременная мышца",
+      "ременная мышца головы"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Шея",
+    "regionTitleEn": "Neck",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "splenius-left",
+      "splenius-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "sternocleidomastoid",
+          "trapezius-upper",
+          "levator-scapulae"
+        ],
+        "antagonists": [
+          "sternocleidomastoid"
+        ]
+      }
+    }
+  },
+  "deltoid-anterior": {
+    "id": "deltoid-anterior",
+    "title": "Передняя дельтовидная мышца",
+    "titleShort": "Передняя дельта",
+    "titleEn": "Anterior Deltoid",
+    "titleLatin": "Deltoideus pars clavicularis",
+    "synonyms": [
+      "передняя дельта",
+      "передний пучок дельты"
+    ],
+    "groupId": "deltoid",
+    "groupTitle": "Дельтовидная мышца",
+    "groupTitleEn": "Deltoid",
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "deltoid-anterior-left",
+      "deltoid-anterior-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "pectoralis-major",
+          "biceps-brachii",
+          "deltoid-medial-lateral"
+        ],
+        "antagonists": [
+          "deltoid-posterior",
+          "infraspinatus-teres-minor",
+          "trapezius-middle",
+          "rhomboids"
+        ]
+      }
+    }
+  },
+  "deltoid-medial-lateral": {
+    "id": "deltoid-medial-lateral",
+    "title": "Средняя дельтовидная мышца",
+    "titleShort": "Средняя дельта",
+    "titleEn": "Medial/Lateral Deltoid",
+    "titleLatin": "Deltoideus pars acromialis",
+    "synonyms": [
+      "средняя дельта",
+      "боковой пучок дельты",
+      "латеральная дельта"
+    ],
+    "groupId": "deltoid",
+    "groupTitle": "Дельтовидная мышца",
+    "groupTitleEn": "Deltoid",
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "deltoid-medial-left",
+      "deltoid-medial-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "deltoid-anterior",
+          "deltoid-posterior",
+          "supraspinatus",
+          "trapezius-upper"
+        ],
+        "antagonists": [
+          "latissimus-dorsi-teres-major",
+          "pectoralis-major"
+        ]
+      }
+    }
+  },
+  "deltoid-posterior": {
+    "id": "deltoid-posterior",
+    "title": "Задняя дельтовидная мышца",
+    "titleShort": "Задняя дельта",
+    "titleEn": "Posterior Deltoid",
+    "titleLatin": "Deltoideus pars spinalis",
+    "synonyms": [
+      "задняя дельта",
+      "задний пучок дельты"
+    ],
+    "groupId": "deltoid",
+    "groupTitle": "Дельтовидная мышца",
+    "groupTitleEn": "Deltoid",
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "deltoid-posterior-left",
+      "deltoid-posterior-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "infraspinatus-teres-minor",
+          "trapezius-middle",
+          "rhomboids"
+        ],
+        "antagonists": [
+          "deltoid-anterior",
+          "pectoralis-major"
+        ]
+      }
+    }
+  },
+  "supraspinatus": {
+    "id": "supraspinatus",
+    "title": "Надостная мышца",
+    "titleShort": "Надостная",
+    "titleEn": "Supraspinatus",
+    "titleLatin": "Musculus supraspinatus",
+    "synonyms": [
+      "надостная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "supraspinatus-left",
+      "supraspinatus-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "deltoid-medial-lateral",
+          "trapezius-upper"
+        ],
+        "antagonists": [
+          "latissimus-dorsi-teres-major",
+          "pectoralis-major",
+          "subscapularis"
+        ]
+      }
+    }
+  },
+  "infraspinatus-teres-minor": {
+    "id": "infraspinatus-teres-minor",
+    "title": "Подостная и малая круглая мышцы",
+    "titleShort": "Подостная и малая круглая",
+    "titleEn": "Infraspinatus & Teres Minor",
+    "titleLatin": "Musculus infraspinatus et teres minor",
+    "synonyms": [
+      "подостная мышца",
+      "малая круглая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "infraspinatus-teres-minor-left",
+      "infraspinatus-teres-minor-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "deltoid-posterior",
+          "trapezius-middle",
+          "rhomboids"
+        ],
+        "antagonists": [
+          "subscapularis",
+          "pectoralis-major",
+          "deltoid-anterior"
+        ]
+      }
+    }
+  },
+  "subscapularis": {
+    "id": "subscapularis",
+    "title": "Подлопаточная мышца",
+    "titleShort": "Подлопаточная",
+    "titleEn": "Subscapularis",
+    "titleLatin": "Musculus subscapularis",
+    "synonyms": [
+      "подлопаточная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Плечи",
+    "regionTitleEn": "Shoulders",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "subscapularis-left",
+      "subscapularis-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "pectoralis-major",
+          "deltoid-anterior",
+          "latissimus-dorsi-teres-major"
+        ],
+        "antagonists": [
+          "infraspinatus-teres-minor",
+          "deltoid-posterior"
+        ]
+      }
+    }
+  },
+  "biceps-brachii": {
+    "id": "biceps-brachii",
+    "title": "Двуглавая мышца плеча",
+    "titleShort": "Бицепс",
+    "titleEn": "Biceps Brachii",
+    "titleLatin": "Musculus biceps brachii",
+    "synonyms": [
+      "бицепс",
+      "двуглавая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Верхняя рука",
+    "regionTitleEn": "Upper Arms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "biceps-left",
+      "biceps-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "brachialis",
+          "brachioradialis",
+          "supinators"
+        ],
+        "antagonists": [
+          "triceps-brachii",
+          "pronators"
+        ]
+      }
+    }
+  },
+  "brachialis": {
+    "id": "brachialis",
+    "title": "Плечевая мышца",
+    "titleShort": "Плечевая",
+    "titleEn": "Brachialis",
+    "titleLatin": "Musculus brachialis",
+    "synonyms": [
+      "плечевая мышца",
+      "брахиалис"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Верхняя рука",
+    "regionTitleEn": "Upper Arms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "brachialis-left",
+      "brachialis-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "biceps-brachii",
+          "brachioradialis"
+        ],
+        "antagonists": [
+          "triceps-brachii"
+        ]
+      }
+    }
+  },
+  "triceps-brachii": {
+    "id": "triceps-brachii",
+    "title": "Трёхглавая мышца плеча",
+    "titleShort": "Трицепс",
+    "titleEn": "Triceps Brachii",
+    "titleLatin": "Musculus triceps brachii",
+    "synonyms": [
+      "трицепс",
+      "трёхглавая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Верхняя рука",
+    "regionTitleEn": "Upper Arms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "triceps-left",
+      "triceps-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "deltoid-posterior",
+          "latissimus-dorsi-teres-major"
+        ],
+        "antagonists": [
+          "biceps-brachii",
+          "brachialis"
+        ]
+      }
+    }
+  },
+  "brachioradialis": {
+    "id": "brachioradialis",
+    "title": "Плечелучевая мышца",
+    "titleShort": "Плечелучевая",
+    "titleEn": "Brachioradialis",
+    "titleLatin": "Musculus brachioradialis",
+    "synonyms": [
+      "плечелучевая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Предплечья",
+    "regionTitleEn": "Forearms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "brachioradialis-left",
+      "brachioradialis-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "biceps-brachii",
+          "brachialis"
+        ],
+        "antagonists": [
+          "triceps-brachii"
+        ]
+      }
+    }
+  },
+  "wrist-extensors": {
+    "id": "wrist-extensors",
+    "title": "Разгибатели запястья",
+    "titleShort": "Разгибатели запястья",
+    "titleEn": "Wrist Extensors",
+    "titleLatin": "Extensores carpi",
+    "synonyms": [
+      "разгибатели кисти",
+      "экстензоры запястья"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Предплечья",
+    "regionTitleEn": "Forearms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "wrist-extensors-left",
+      "wrist-extensors-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "brachioradialis"
+        ],
+        "antagonists": [
+          "wrist-flexors",
+          "pronators"
+        ]
+      }
+    }
+  },
+  "wrist-flexors": {
+    "id": "wrist-flexors",
+    "title": "Сгибатели запястья",
+    "titleShort": "Сгибатели запястья",
+    "titleEn": "Wrist Flexors",
+    "titleLatin": "Flexores carpi",
+    "synonyms": [
+      "сгибатели кисти",
+      "флексоры запястья"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Предплечья",
+    "regionTitleEn": "Forearms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "wrist-flexors-left",
+      "wrist-flexors-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "pronators",
+          "brachioradialis"
+        ],
+        "antagonists": [
+          "wrist-extensors",
+          "supinators"
+        ]
+      }
+    }
+  },
+  "pronators": {
+    "id": "pronators",
+    "title": "Пронаторы",
+    "titleShort": "Пронаторы",
+    "titleEn": "Pronators",
+    "titleLatin": "Pronatores",
+    "synonyms": [
+      "пронаторы предплечья"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Предплечья",
+    "regionTitleEn": "Forearms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "pronators-left",
+      "pronators-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "wrist-flexors"
+        ],
+        "antagonists": [
+          "supinators",
+          "biceps-brachii"
+        ]
+      }
+    }
+  },
+  "supinators": {
+    "id": "supinators",
+    "title": "Супинаторы",
+    "titleShort": "Супинаторы",
+    "titleEn": "Supinators",
+    "titleLatin": "Supinatores",
+    "synonyms": [
+      "супинаторы предплечья"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Предплечья",
+    "regionTitleEn": "Forearms",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "supinators-left",
+      "supinators-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "biceps-brachii"
+        ],
+        "antagonists": [
+          "pronators",
+          "wrist-flexors"
+        ]
+      }
+    }
+  },
+  "trapezius-upper": {
+    "id": "trapezius-upper",
+    "title": "Верхняя часть трапециевидной мышцы",
+    "titleShort": "Верхняя трапеция",
+    "titleEn": "Upper Trapezius",
+    "titleLatin": "Trapezius pars descendens",
+    "synonyms": [
+      "верхняя трапеция",
+      "верхний пучок трапеции"
+    ],
+    "groupId": "trapezius",
+    "groupTitle": "Трапециевидная мышца",
+    "groupTitleEn": "Trapezius",
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "trapezius-upper-left",
+      "trapezius-upper-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "levator-scapulae",
+          "sternocleidomastoid",
+          "deltoid-medial-lateral"
+        ],
+        "antagonists": [
+          "trapezius-lower",
+          "serratus-anterior",
+          "rhomboids"
+        ]
+      }
+    }
+  },
+  "trapezius-middle": {
+    "id": "trapezius-middle",
+    "title": "Средняя часть трапециевидной мышцы",
+    "titleShort": "Средняя трапеция",
+    "titleEn": "Middle Trapezius",
+    "titleLatin": "Trapezius pars transversa",
+    "synonyms": [
+      "средняя трапеция",
+      "средний пучок трапеции"
+    ],
+    "groupId": "trapezius",
+    "groupTitle": "Трапециевидная мышца",
+    "groupTitleEn": "Trapezius",
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "trapezius-middle-left",
+      "trapezius-middle-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "rhomboids",
+          "deltoid-posterior",
+          "infraspinatus-teres-minor"
+        ],
+        "antagonists": [
+          "serratus-anterior",
+          "pectoralis-minor"
+        ]
+      }
+    }
+  },
+  "trapezius-lower": {
+    "id": "trapezius-lower",
+    "title": "Нижняя часть трапециевидной мышцы",
+    "titleShort": "Нижняя трапеция",
+    "titleEn": "Lower Trapezius",
+    "titleLatin": "Trapezius pars ascendens",
+    "synonyms": [
+      "нижняя трапеция",
+      "нижний пучок трапеции"
+    ],
+    "groupId": "trapezius",
+    "groupTitle": "Трапециевидная мышца",
+    "groupTitleEn": "Trapezius",
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "trapezius-lower-left",
+      "trapezius-lower-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "serratus-anterior",
+          "rhomboids"
+        ],
+        "antagonists": [
+          "trapezius-upper",
+          "levator-scapulae"
+        ]
+      }
+    }
+  },
+  "latissimus-dorsi-teres-major": {
+    "id": "latissimus-dorsi-teres-major",
+    "title": "Широчайшая и большая круглая мышцы",
+    "titleShort": "Широчайшая и большая круглая",
+    "titleEn": "Latissimus Dorsi & Teres Major",
+    "titleLatin": "Musculus latissimus dorsi et teres major",
+    "synonyms": [
+      "широчайшая мышца спины",
+      "большая круглая мышца",
+      "крылья"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "latissimus-teres-left",
+      "latissimus-teres-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "triceps-brachii",
+          "deltoid-posterior",
+          "subscapularis"
+        ],
+        "antagonists": [
+          "deltoid-anterior",
+          "deltoid-medial-lateral",
+          "biceps-brachii",
+          "supraspinatus"
+        ]
+      }
+    }
+  },
+  "rhomboids": {
+    "id": "rhomboids",
+    "title": "Ромбовидные мышцы",
+    "titleShort": "Ромбовидные",
+    "titleEn": "Rhomboids",
+    "titleLatin": "Musculi rhomboidei",
+    "synonyms": [
+      "ромбовидные мышцы",
+      "ромбовидная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "rhomboids-left",
+      "rhomboids-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "trapezius-middle",
+          "deltoid-posterior"
+        ],
+        "antagonists": [
+          "serratus-anterior",
+          "pectoralis-minor",
+          "pectoralis-major"
+        ]
+      }
+    }
+  },
+  "levator-scapulae": {
+    "id": "levator-scapulae",
+    "title": "Мышца поднимающая лопатку",
+    "titleShort": "Поднимающая лопатку",
+    "titleEn": "Levator Scapulae",
+    "titleLatin": "Musculus levator scapulae",
+    "synonyms": [
+      "мышца поднимающая лопатку"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "levator-scapulae-left",
+      "levator-scapulae-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "trapezius-upper",
+          "sternocleidomastoid"
+        ],
+        "antagonists": [
+          "trapezius-lower",
+          "serratus-anterior"
+        ]
+      }
+    }
+  },
+  "pectoralis-major": {
+    "id": "pectoralis-major",
+    "title": "Большая грудная мышца",
+    "titleShort": "Грудная",
+    "titleEn": "Pectoralis Major",
+    "titleLatin": "Musculus pectoralis major",
+    "synonyms": [
+      "большая грудная",
+      "грудные мышцы",
+      "грудь"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Грудь",
+    "regionTitleEn": "Chest",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "pectoralis-major-left",
+      "pectoralis-major-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "deltoid-anterior",
+          "biceps-brachii",
+          "subscapularis"
+        ],
+        "antagonists": [
+          "trapezius-middle",
+          "rhomboids",
+          "deltoid-posterior",
+          "infraspinatus-teres-minor"
+        ]
+      }
+    }
+  },
+  "pectoralis-minor": {
+    "id": "pectoralis-minor",
+    "title": "Малая грудная мышца",
+    "titleShort": "Малая грудная",
+    "titleEn": "Pectoralis Minor",
+    "titleLatin": "Musculus pectoralis minor",
+    "synonyms": [
+      "малая грудная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Грудь",
+    "regionTitleEn": "Chest",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "pectoralis-minor-left",
+      "pectoralis-minor-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "serratus-anterior"
+        ],
+        "antagonists": [
+          "trapezius-lower",
+          "trapezius-middle",
+          "rhomboids"
+        ]
+      }
+    }
+  },
+  "serratus-anterior": {
+    "id": "serratus-anterior",
+    "title": "Передняя зубчатая мышца",
+    "titleShort": "Передняя зубчатая",
+    "titleEn": "Serratus Anterior",
+    "titleLatin": "Musculus serratus anterior",
+    "synonyms": [
+      "передняя зубчатая мышца",
+      "зубчатая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Грудь",
+    "regionTitleEn": "Chest",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "serratus-anterior-left",
+      "serratus-anterior-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "trapezius-lower",
+          "pectoralis-minor"
+        ],
+        "antagonists": [
+          "trapezius-upper",
+          "rhomboids",
+          "levator-scapulae"
+        ]
+      }
+    }
+  },
+  "rectus-abdominis": {
+    "id": "rectus-abdominis",
+    "title": "Прямая мышца живота",
+    "titleShort": "Прямая мышца живота",
+    "titleEn": "Rectus Abdominis",
+    "titleLatin": "Musculus rectus abdominis",
+    "synonyms": [
+      "прямая мышца живота",
+      "пресс",
+      "кубики"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Талия",
+    "regionTitleEn": "Waist",
+    "zoneTitle": "Кор",
+    "zoneTitleEn": "Core",
+    "svgIds": [
+      "rectus-abdominis"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "obliques",
+          "hip-flexors"
+        ],
+        "antagonists": [
+          "erector-spinae",
+          "quadratus-lumborum"
+        ]
+      }
+    }
+  },
+  "obliques": {
+    "id": "obliques",
+    "title": "Косые мышцы живота",
+    "titleShort": "Косые",
+    "titleEn": "Obliques",
+    "titleLatin": "Musculi obliqui abdominis",
+    "synonyms": [
+      "косые мышцы живота",
+      "косые мышцы пресса"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Талия",
+    "regionTitleEn": "Waist",
+    "zoneTitle": "Кор",
+    "zoneTitleEn": "Core",
+    "svgIds": [
+      "obliques-left",
+      "obliques-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "rectus-abdominis",
+          "quadratus-lumborum"
+        ],
+        "antagonists": [
+          "erector-spinae",
+          "latissimus-dorsi-teres-major"
+        ]
+      }
+    }
+  },
+  "erector-spinae": {
+    "id": "erector-spinae",
+    "title": "Разгибатели спины",
+    "titleShort": "Разгибатели спины",
+    "titleEn": "Erector Spinae",
+    "titleLatin": "Musculus erector spinae",
+    "synonyms": [
+      "разгибатели позвоночника",
+      "мышцы-разгибатели спины"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Спина",
+    "regionTitleEn": "Back",
+    "zoneTitle": "Верхняя часть тела",
+    "zoneTitleEn": "Upper Body",
+    "svgIds": [
+      "erector-spinae-left",
+      "erector-spinae-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "gluteus",
+          "hamstrings",
+          "quadratus-lumborum"
+        ],
+        "antagonists": [
+          "rectus-abdominis",
+          "obliques",
+          "hip-flexors"
+        ]
+      }
+    }
+  },
+  "quadratus-lumborum": {
+    "id": "quadratus-lumborum",
+    "title": "Квадратная мышца поясницы",
+    "titleShort": "Квадратная мышца поясницы",
+    "titleEn": "Quadratus Lumborum",
+    "titleLatin": "Musculus quadratus lumborum",
+    "synonyms": [
+      "квадратная мышца поясницы"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Талия",
+    "regionTitleEn": "Waist",
+    "zoneTitle": "Кор",
+    "zoneTitleEn": "Core",
+    "svgIds": [
+      "quadratus-lumborum-left",
+      "quadratus-lumborum-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "erector-spinae",
+          "obliques",
+          "gluteus"
+        ],
+        "antagonists": [
+          "hip-adductors",
+          "hip-flexors"
+        ]
+      }
+    }
+  },
+  "gluteus": {
+    "id": "gluteus",
+    "title": "Ягодичная мышца",
+    "titleShort": "Ягодичная",
+    "titleEn": "Gluteus Maximus",
+    "titleLatin": "Musculus gluteus maximus",
+    "synonyms": [
+      "ягодичная",
+      "ягодицы",
+      "глютеус",
+      "большая ягодичная"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Тазобедренная область",
+    "regionTitleEn": "Hips",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "gluteus-left",
+      "gluteus-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "hamstrings",
+          "erector-spinae",
+          "abductors"
+        ],
+        "antagonists": [
+          "hip-flexors",
+          "rectus-abdominis"
+        ]
+      }
+    }
+  },
+  "abductors": {
+    "id": "abductors",
+    "title": "Отводящие мышцы бедра",
+    "titleShort": "Отводящие бедра",
+    "titleEn": "Abductors",
+    "titleLatin": "Abductores femoris",
+    "synonyms": [
+      "отводящие мышцы",
+      "абдукторы"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Тазобедренная область",
+    "regionTitleEn": "Hips",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "abductors-left",
+      "abductors-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "gluteus",
+          "deep-external-rotators"
+        ],
+        "antagonists": [
+          "hip-adductors"
+        ]
+      }
+    }
+  },
+  "hip-flexors": {
+    "id": "hip-flexors",
+    "title": "Сгибатели бедра",
+    "titleShort": "Сгибатели бедра",
+    "titleEn": "Hip Flexors",
+    "titleLatin": "Flexores coxae",
+    "synonyms": [
+      "сгибатели бедра",
+      "флексоры бедра"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Тазобедренная область",
+    "regionTitleEn": "Hips",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "hip-flexors-left",
+      "hip-flexors-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "rectus-abdominis",
+          "quadriceps",
+          "sartorius"
+        ],
+        "antagonists": [
+          "gluteus",
+          "hamstrings",
+          "erector-spinae"
+        ]
+      }
+    }
+  },
+  "hip-adductors": {
+    "id": "hip-adductors",
+    "title": "Приводящие мышцы бедра",
+    "titleShort": "Приводящие бедра",
+    "titleEn": "Hip Adductors",
+    "titleLatin": "Adductores femoris",
+    "synonyms": [
+      "приводящие мышцы",
+      "аддукторы"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Тазобедренная область",
+    "regionTitleEn": "Hips",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "hip-adductors-left",
+      "hip-adductors-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "hip-flexors",
+          "sartorius"
+        ],
+        "antagonists": [
+          "abductors",
+          "gluteus",
+          "deep-external-rotators"
+        ]
+      }
+    }
+  },
+  "deep-external-rotators": {
+    "id": "deep-external-rotators",
+    "title": "Глубокие наружные ротаторы",
+    "titleShort": "Глубокие наружные ротаторы",
+    "titleEn": "Deep External Rotators",
+    "titleLatin": "Rotatores externi profundi",
+    "synonyms": [
+      "глубокие наружные ротаторы",
+      "наружные ротаторы бедра"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Тазобедренная область",
+    "regionTitleEn": "Hips",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "deep-external-rotators-left",
+      "deep-external-rotators-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "gluteus",
+          "abductors"
+        ],
+        "antagonists": [
+          "hip-adductors",
+          "hip-flexors"
+        ]
+      }
+    }
+  },
+  "quadriceps": {
+    "id": "quadriceps",
+    "title": "Четырёхглавая мышца бедра",
+    "titleShort": "Квадрицепс",
+    "titleEn": "Quadriceps",
+    "titleLatin": "Musculus quadriceps femoris",
+    "synonyms": [
+      "квадрицепс",
+      "четырёхглавая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Бёдра",
+    "regionTitleEn": "Thighs",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "quadriceps-left",
+      "quadriceps-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "hip-flexors",
+          "sartorius"
+        ],
+        "antagonists": [
+          "hamstrings",
+          "gluteus"
+        ]
+      }
+    }
+  },
+  "hamstrings": {
+    "id": "hamstrings",
+    "title": "Задняя группа мышц бедра",
+    "titleShort": "Хамстринги",
+    "titleEn": "Hamstrings",
+    "titleLatin": "Musculi femoris posteriores",
+    "synonyms": [
+      "задняя поверхность бедра",
+      "хамстринги",
+      "бицепс бедра"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Бёдра",
+    "regionTitleEn": "Thighs",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "hamstrings-left",
+      "hamstrings-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "gluteus",
+          "erector-spinae",
+          "gastrocnemius"
+        ],
+        "antagonists": [
+          "quadriceps",
+          "hip-flexors"
+        ]
+      }
+    }
+  },
+  "sartorius": {
+    "id": "sartorius",
+    "title": "Портняжная мышца",
+    "titleShort": "Портняжная",
+    "titleEn": "Sartorius",
+    "titleLatin": "Musculus sartorius",
+    "synonyms": [
+      "портняжная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Бёдра",
+    "regionTitleEn": "Thighs",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "sartorius-left",
+      "sartorius-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "hip-flexors",
+          "hip-adductors",
+          "quadriceps"
+        ],
+        "antagonists": [
+          "deep-external-rotators",
+          "abductors"
+        ]
+      }
+    }
+  },
+  "gastrocnemius": {
+    "id": "gastrocnemius",
+    "title": "Икроножная мышца",
+    "titleShort": "Икроножная",
+    "titleEn": "Gastrocnemius",
+    "titleLatin": "Musculus gastrocnemius",
+    "synonyms": [
+      "икроножная мышца",
+      "икры"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Голени",
+    "regionTitleEn": "Calves",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "gastrocnemius-left",
+      "gastrocnemius-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "soleus",
+          "hamstrings"
+        ],
+        "antagonists": [
+          "tibialis-anterior"
+        ]
+      }
+    }
+  },
+  "soleus": {
+    "id": "soleus",
+    "title": "Камбаловидная мышца",
+    "titleShort": "Камбаловидная",
+    "titleEn": "Soleus",
+    "titleLatin": "Musculus soleus",
+    "synonyms": [
+      "камбаловидная мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Голени",
+    "regionTitleEn": "Calves",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "soleus-left",
+      "soleus-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [
+          "gastrocnemius"
+        ],
+        "antagonists": [
+          "tibialis-anterior"
+        ]
+      }
+    }
+  },
+  "tibialis-anterior": {
+    "id": "tibialis-anterior",
+    "title": "Передняя большеберцовая мышца",
+    "titleShort": "Передняя большеберцовая",
+    "titleEn": "Tibialis Anterior",
+    "titleLatin": "Musculus tibialis anterior",
+    "synonyms": [
+      "передняя большеберцовая мышца"
+    ],
+    "groupId": null,
+    "groupTitle": null,
+    "groupTitleEn": null,
+    "regionTitle": "Голени",
+    "regionTitleEn": "Calves",
+    "zoneTitle": "Нижняя часть тела",
+    "zoneTitleEn": "Lower Body",
+    "svgIds": [
+      "tibialis-anterior-left",
+      "tibialis-anterior-right"
+    ],
+    "related": {
+      "muscles": {
+        "synergists": [],
+        "antagonists": [
+          "gastrocnemius",
+          "soleus"
+        ]
+      }
+    }
+  }
+}

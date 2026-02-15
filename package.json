@@ -8,6 +8,8 @@
     "build": "npm run build:index && npm run validate && vite build",
     "build:index": "node scripts/buildIndex.js",
     "validate": "node scripts/validate.js",
+    "generate:muscles": "node scripts/generateMuscles.js",
+    "status": "node scripts/status.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

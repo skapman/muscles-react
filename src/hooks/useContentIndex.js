@@ -38,7 +38,25 @@ export function getRelatedNodes(id) {
   const related = []
 
   // Iterate through all related types (muscles, exercises, goals, pain)
-  for (const ids of Object.values(entry.related)) {
+  for (const [relType, ids] of Object.entries(entry.related)) {
+    // Special handling for muscles which has synergists/antagonists structure
+    if (relType === 'muscles' && typeof ids === 'object' && !Array.isArray(ids)) {
+      // Add synergists
+      for (const relId of (ids.synergists || [])) {
+        if (contentIndex[relId]) {
+          related.push(contentIndex[relId])
+        }
+      }
+      // Add antagonists
+      for (const relId of (ids.antagonists || [])) {
+        if (contentIndex[relId]) {
+          related.push(contentIndex[relId])
+        }
+      }
+      continue
+    }
+
+    // Standard array handling
     if (!Array.isArray(ids)) continue
 
     for (const relId of ids) {
@@ -69,6 +87,24 @@ export function getRelatedNodesByType(id) {
   }
 
   for (const [type, ids] of Object.entries(entry.related)) {
+    // Special handling for muscles which has synergists/antagonists structure
+    if (type === 'muscles' && typeof ids === 'object' && !Array.isArray(ids)) {
+      // Add synergists
+      for (const relId of (ids.synergists || [])) {
+        if (contentIndex[relId]) {
+          result.muscles.push(contentIndex[relId])
+        }
+      }
+      // Add antagonists
+      for (const relId of (ids.antagonists || [])) {
+        if (contentIndex[relId]) {
+          result.muscles.push(contentIndex[relId])
+        }
+      }
+      continue
+    }
+
+    // Standard array handling
     if (!Array.isArray(ids)) continue
 
     for (const relId of ids) {
@@ -103,7 +139,41 @@ export function buildGraphData() {
   for (const entry of Object.values(contentIndex)) {
     if (!entry.related) continue
 
-    for (const relIds of Object.values(entry.related)) {
+    for (const [relType, relIds] of Object.entries(entry.related)) {
+      // Special handling for muscles which has synergists/antagonists structure
+      if (relType === 'muscles' && typeof relIds === 'object' && !Array.isArray(relIds)) {
+        // Process synergists
+        for (const relId of (relIds.synergists || [])) {
+          if (!contentIndex[relId]) continue
+          const key = [entry.id, relId].sort().join('--')
+          if (!seen.has(key)) {
+            seen.add(key)
+            links.push({
+              source: entry.id,
+              target: relId,
+              from: entry.id,
+              to: relId
+            })
+          }
+        }
+        // Process antagonists
+        for (const relId of (relIds.antagonists || [])) {
+          if (!contentIndex[relId]) continue
+          const key = [entry.id, relId].sort().join('--')
+          if (!seen.has(key)) {
+            seen.add(key)
+            links.push({
+              source: entry.id,
+              target: relId,
+              from: entry.id,
+              to: relId
+            })
+          }
+        }
+        continue
+      }
+
+      // Standard array handling for other relation types (exercises, goals, pain)
       if (!Array.isArray(relIds)) continue
 
       for (const relId of relIds) {

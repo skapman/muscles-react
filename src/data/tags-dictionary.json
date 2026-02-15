@@ -1,0 +1,248 @@
+{
+  "ягодицы": {
+    "id": "ягодицы",
+    "titleEn": "Glutes",
+    "aliases": ["ягодица", "глютеус"],
+    "category": "bodyPart"
+  },
+  "бёдра": {
+    "id": "бёдра",
+    "titleEn": "Thighs",
+    "aliases": ["бедро", "бедра"],
+    "category": "bodyPart"
+  },
+  "плечи": {
+    "id": "плечи",
+    "titleEn": "Shoulders",
+    "aliases": ["плечо", "дельты"],
+    "category": "bodyPart"
+  },
+  "дельты": {
+    "id": "дельты",
+    "titleEn": "Delts",
+    "aliases": ["дельта", "дельтовидные"],
+    "category": "bodyPart"
+  },
+  "спина": {
+    "id": "спина",
+    "titleEn": "Back",
+    "aliases": [],
+    "category": "bodyPart"
+  },
+  "грудь": {
+    "id": "грудь",
+    "titleEn": "Chest",
+    "aliases": ["грудные", "грудная"],
+    "category": "bodyPart"
+  },
+  "пресс": {
+    "id": "пресс",
+    "titleEn": "Abs",
+    "aliases": ["живот", "абдоминальные"],
+    "category": "bodyPart"
+  },
+  "кор": {
+    "id": "кор",
+    "titleEn": "Core",
+    "aliases": ["корпус"],
+    "category": "bodyPart"
+  },
+  "живот": {
+    "id": "живот",
+    "titleEn": "Abdomen",
+    "aliases": ["абдоминальная область"],
+    "category": "bodyPart"
+  },
+  "ноги": {
+    "id": "ноги",
+    "titleEn": "Legs",
+    "aliases": ["нога"],
+    "category": "bodyPart"
+  },
+  "икры": {
+    "id": "икры",
+    "titleEn": "Calves",
+    "aliases": ["икра", "икроножные"],
+    "category": "bodyPart"
+  },
+  "трицепс": {
+    "id": "трицепс",
+    "titleEn": "Triceps",
+    "aliases": ["трицепсы"],
+    "category": "bodyPart"
+  },
+  "бицепс": {
+    "id": "бицепс",
+    "titleEn": "Biceps",
+    "aliases": ["бицепсы"],
+    "category": "bodyPart"
+  },
+  "косые": {
+    "id": "косые",
+    "titleEn": "Obliques",
+    "aliases": ["косые мышцы"],
+    "category": "bodyPart"
+  },
+  "лопатки": {
+    "id": "лопатки",
+    "titleEn": "Scapula",
+    "aliases": ["лопатка"],
+    "category": "bodyPart"
+  },
+  "жим": {
+    "id": "жим",
+    "titleEn": "Press",
+    "aliases": ["жимовые"],
+    "category": "bodyPart"
+  },
+  "подтягивания": {
+    "id": "подтягивания",
+    "titleEn": "Pull-ups",
+    "aliases": ["подтягивание"],
+    "category": "bodyPart"
+  },
+  "верхняя часть тела": {
+    "id": "верхняя часть тела",
+    "titleEn": "Upper Body",
+    "aliases": ["верх тела", "верхняя"],
+    "category": "bodyPart"
+  },
+  "нижняя часть тела": {
+    "id": "нижняя часть тела",
+    "titleEn": "Lower Body",
+    "aliases": ["низ тела", "нижняя"],
+    "category": "bodyPart"
+  },
+  "верхняя грудь": {
+    "id": "верхняя грудь",
+    "titleEn": "Upper Chest",
+    "aliases": ["верх груди"],
+    "category": "bodyPart"
+  },
+  "базовое": {
+    "id": "базовое",
+    "titleEn": "Compound",
+    "aliases": ["базовое упражнение", "compound", "база"],
+    "category": "exerciseType"
+  },
+  "изоляция": {
+    "id": "изоляция",
+    "titleEn": "Isolation",
+    "aliases": ["изолирующее", "изолированное"],
+    "category": "exerciseType"
+  },
+  "кардио": {
+    "id": "кардио",
+    "titleEn": "Cardio",
+    "aliases": ["кардионагрузка", "аэробное"],
+    "category": "exerciseType"
+  },
+  "статика": {
+    "id": "статика",
+    "titleEn": "Static",
+    "aliases": ["статическое", "изометрическое"],
+    "category": "exerciseType"
+  },
+  "собственный вес": {
+    "id": "собственный вес",
+    "titleEn": "Bodyweight",
+    "aliases": ["без оборудования", "bodyweight", "калистеника"],
+    "category": "exerciseType"
+  },
+  "гипертрофия": {
+    "id": "гипертрофия",
+    "titleEn": "Hypertrophy",
+    "aliases": ["масса", "объём", "рост мышц"],
+    "category": "goal"
+  },
+  "масса": {
+    "id": "масса",
+    "titleEn": "Mass",
+    "aliases": ["набор массы", "мышечная масса"],
+    "category": "goal"
+  },
+  "объём": {
+    "id": "объём",
+    "titleEn": "Volume",
+    "aliases": ["объемы"],
+    "category": "goal"
+  },
+  "сила": {
+    "id": "сила",
+    "titleEn": "Strength",
+    "aliases": ["силовые", "развитие силы"],
+    "category": "goal"
+  },
+  "выносливость": {
+    "id": "выносливость",
+    "titleEn": "Endurance",
+    "aliases": ["выносливость мышц", "стамина"],
+    "category": "goal"
+  },
+  "эстетика": {
+    "id": "эстетика",
+    "titleEn": "Aesthetics",
+    "aliases": ["эстетичность", "внешний вид"],
+    "category": "goal"
+  },
+  "рельеф": {
+    "id": "рельеф",
+    "titleEn": "Definition",
+    "aliases": ["рельефность", "прорисовка"],
+    "category": "goal"
+  },
+  "жиросжигание": {
+    "id": "жиросжигание",
+    "titleEn": "Fat Loss",
+    "aliases": ["сжигание жира", "похудение"],
+    "category": "goal"
+  },
+  "beginner": {
+    "id": "beginner",
+    "titleEn": "Beginner",
+    "aliases": ["новичок", "начинающий", "начальный"],
+    "category": "goal"
+  },
+  "intermediate": {
+    "id": "intermediate",
+    "titleEn": "Intermediate",
+    "aliases": ["средний", "промежуточный"],
+    "category": "goal"
+  },
+  "advanced": {
+    "id": "advanced",
+    "titleEn": "Advanced",
+    "aliases": ["продвинутый", "опытный"],
+    "category": "goal"
+  },
+  "бег": {
+    "id": "бег",
+    "titleEn": "Running",
+    "aliases": ["running", "пробежка"],
+    "category": "goal"
+  },
+  "реабилитация": {
+    "id": "реабилитация",
+    "titleEn": "Rehabilitation",
+    "aliases": ["восстановление", "rehab"],
+    "category": "condition"
+  },
+  "хроническая боль": {
+    "id": "хроническая боль",
+    "titleEn": "Chronic Pain",
+    "aliases": ["хроническая", "chronic"],
+    "category": "condition"
+  },
+  "поясница": {
+    "id": "поясница",
+    "titleEn": "Lower Back",
+    "aliases": ["поясничный отдел", "lower back"],
+    "category": "condition"
+  },
+  "колено": {
+    "id": "колено",
+    "titleEn": "Knee",
+    "aliases": ["колени"],
+    "category": "condition"
+  }
+}
