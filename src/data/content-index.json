@@ -1,4 +1,77 @@
 {
+  "deltoid-anterior": {
+    "id": "deltoid-anterior",
+    "type": "muscle",
+    "title": "Передняя дельтовидная мышца",
+    "titleShort": "Передняя дельта",
+    "layer": "muscles",
+    "tags": [
+      "плечи",
+      "дельты",
+      "верхняя часть тела"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [
+        "bench-press",
+        "dumbbell-press",
+        "incline-bench-press",
+        "push-ups"
+      ],
+      "goals": [
+        "bench-100kg"
+      ],
+      "pain": []
+    },
+    "image": "deltoid-anterior.jpg",
+    "status": "published",
+    "slug": "deltoid-anterior",
+    "path": "muscles/deltoid-anterior"
+  },
+  "deltoid-medial-lateral": {
+    "id": "deltoid-medial-lateral",
+    "type": "muscle",
+    "title": "Средняя/боковая дельтовидная мышца",
+    "titleShort": "Средняя дельта",
+    "layer": "muscles",
+    "tags": [
+      "плечи",
+      "дельты",
+      "верхняя часть тела"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "image": "deltoid-medial-lateral.jpg",
+    "status": "published",
+    "slug": "deltoid-medial-lateral",
+    "path": "muscles/deltoid-medial-lateral"
+  },
+  "deltoid-posterior": {
+    "id": "deltoid-posterior",
+    "type": "muscle",
+    "title": "Задняя дельтовидная мышца",
+    "titleShort": "Задняя дельта",
+    "layer": "muscles",
+    "tags": [
+      "плечи",
+      "дельты",
+      "верхняя часть тела"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "image": "deltoid-posterior.jpg",
+    "status": "published",
+    "slug": "deltoid-posterior",
+    "path": "muscles/deltoid-posterior"
+  },
   "gluteus": {
     "id": "gluteus",
     "type": "muscle",
@@ -36,5 +109,926 @@
     "status": "published",
     "slug": "gluteus",
     "path": "muscles/gluteus"
+  },
+  "obliques": {
+    "id": "obliques",
+    "type": "muscle",
+    "title": "Косые мышцы живота",
+    "titleShort": "Косые",
+    "layer": "muscles",
+    "tags": [
+      "пресс",
+      "кор",
+      "живот",
+      "верхняя часть тела"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "image": "obliques.jpg",
+    "status": "published",
+    "slug": "obliques",
+    "path": "muscles/obliques"
+  },
+  "pectoralis-major": {
+    "id": "pectoralis-major",
+    "type": "muscle",
+    "title": "Большая грудная мышца",
+    "titleShort": "Грудная",
+    "layer": "muscles",
+    "tags": [
+      "грудь",
+      "верхняя часть тела",
+      "жим"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [
+        "bench-press",
+        "cable-crossover",
+        "close-grip-bench-press",
+        "dips",
+        "dumbbell-fly",
+        "dumbbell-press",
+        "incline-bench-press",
+        "push-ups"
+      ],
+      "goals": [
+        "bench-100kg",
+        "build-chest"
+      ],
+      "pain": []
+    },
+    "image": "pectoralis-major.jpg",
+    "status": "published",
+    "slug": "pectoralis-major",
+    "path": "muscles/pectoralis-major"
+  },
+  "rectus-abdominis": {
+    "id": "rectus-abdominis",
+    "type": "muscle",
+    "title": "Прямая мышца живота",
+    "titleShort": "Пресс",
+    "layer": "muscles",
+    "tags": [
+      "пресс",
+      "кор",
+      "живот",
+      "верхняя часть тела"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [
+        "cable-crunches",
+        "hanging-leg-raises",
+        "plank"
+      ],
+      "goals": [
+        "six-pack-abs"
+      ],
+      "pain": []
+    },
+    "image": "rectus-abdominis.jpg",
+    "status": "published",
+    "slug": "rectus-abdominis",
+    "path": "muscles/rectus-abdominis"
+  },
+  "trapezius-lower": {
+    "id": "trapezius-lower",
+    "type": "muscle",
+    "title": "Нижняя часть трапециевидной мышцы",
+    "titleShort": "Нижняя трапеция",
+    "layer": "muscles",
+    "tags": [
+      "спина",
+      "верхняя часть тела",
+      "лопатки"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "image": "trapezius-lower.jpg",
+    "status": "published",
+    "slug": "trapezius-lower",
+    "path": "muscles/trapezius-lower"
+  },
+  "trapezius-middle": {
+    "id": "trapezius-middle",
+    "type": "muscle",
+    "title": "Средняя часть трапециевидной мышцы",
+    "titleShort": "Средняя трапеция",
+    "layer": "muscles",
+    "tags": [
+      "спина",
+      "верхняя часть тела",
+      "лопатки"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [
+        "inverted-rows"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "trapezius-middle.jpg",
+    "status": "published",
+    "slug": "trapezius-middle",
+    "path": "muscles/trapezius-middle"
+  },
+  "trapezius-upper": {
+    "id": "trapezius-upper",
+    "type": "muscle",
+    "title": "Верхняя часть трапециевидной мышцы",
+    "titleShort": "Верхняя трапеция",
+    "layer": "muscles",
+    "tags": [
+      "спина",
+      "верхняя часть тела",
+      "плечи"
+    ],
+    "related": {
+      "muscles": [],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "image": "trapezius-upper.jpg",
+    "status": "published",
+    "slug": "trapezius-upper",
+    "path": "muscles/trapezius-upper"
+  },
+  "assisted-pull-ups": {
+    "id": "assisted-pull-ups",
+    "type": "exercise",
+    "title": "Подтягивания с помощью",
+    "titleShort": "Подтягивания с резинкой",
+    "tags": [
+      "базовое",
+      "спина",
+      "бицепс",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "latissimus-dorsi",
+        "biceps-brachii"
+      ],
+      "exercises": [
+        "pull-ups",
+        "lat-pulldown"
+      ],
+      "goals": [
+        "pullups-10-reps"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "pull-up-bar",
+      "resistance-band"
+    ],
+    "image": "assisted-pull-ups.jpg",
+    "status": "published",
+    "slug": "assisted-pull-ups",
+    "path": "exercises/assisted-pull-ups"
+  },
+  "bench-press": {
+    "id": "bench-press",
+    "type": "exercise",
+    "title": "Жим штанги лёжа",
+    "titleShort": "Жим лёжа",
+    "tags": [
+      "базовое",
+      "грудь",
+      "трицепс",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "triceps-brachii",
+        "deltoid-anterior"
+      ],
+      "exercises": [
+        "incline-bench-press",
+        "close-grip-bench-press",
+        "dumbbell-press"
+      ],
+      "goals": [
+        "bench-100kg",
+        "build-chest"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "image": "bench-press.jpg",
+    "status": "published",
+    "slug": "bench-press",
+    "path": "exercises/bench-press"
+  },
+  "cable-crossover": {
+    "id": "cable-crossover",
+    "type": "exercise",
+    "title": "Сведение рук в кроссовере",
+    "titleShort": "Кроссовер",
+    "tags": [
+      "изоляция",
+      "грудь",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major"
+      ],
+      "exercises": [],
+      "goals": [
+        "build-chest"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "cable-machine"
+    ],
+    "image": "cable-crossover.jpg",
+    "status": "published",
+    "slug": "cable-crossover",
+    "path": "exercises/cable-crossover"
+  },
+  "cable-crunches": {
+    "id": "cable-crunches",
+    "type": "exercise",
+    "title": "Скручивания на блоке",
+    "titleShort": "Скручивания",
+    "tags": [
+      "изоляция",
+      "пресс",
+      "кор",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "rectus-abdominis"
+      ],
+      "exercises": [],
+      "goals": [
+        "six-pack-abs"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "cable-machine"
+    ],
+    "image": "cable-crunches.jpg",
+    "status": "published",
+    "slug": "cable-crunches",
+    "path": "exercises/cable-crunches"
+  },
+  "calf-raises": {
+    "id": "calf-raises",
+    "type": "exercise",
+    "title": "Подъём на носки",
+    "titleShort": "Подъём на носки",
+    "tags": [
+      "изоляция",
+      "икры",
+      "ноги",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "gastrocnemius",
+        "soleus"
+      ],
+      "exercises": [],
+      "goals": [
+        "run-5km"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "calf-raises.jpg",
+    "status": "published",
+    "slug": "calf-raises",
+    "path": "exercises/calf-raises"
+  },
+  "close-grip-bench-press": {
+    "id": "close-grip-bench-press",
+    "type": "exercise",
+    "title": "Жим узким хватом",
+    "titleShort": "Узкий жим",
+    "tags": [
+      "базовое",
+      "трицепс",
+      "грудь",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "triceps-brachii",
+        "pectoralis-major"
+      ],
+      "exercises": [
+        "bench-press"
+      ],
+      "goals": [
+        "bench-100kg"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "image": "close-grip-bench-press.jpg",
+    "status": "published",
+    "slug": "close-grip-bench-press",
+    "path": "exercises/close-grip-bench-press"
+  },
+  "dips": {
+    "id": "dips",
+    "type": "exercise",
+    "title": "Отжимания на брусьях",
+    "titleShort": "Брусья",
+    "tags": [
+      "базовое",
+      "грудь",
+      "трицепс",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "triceps-brachii"
+      ],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "equipment": [
+      "parallel-bars"
+    ],
+    "image": "dips.jpg",
+    "status": "published",
+    "slug": "dips",
+    "path": "exercises/dips"
+  },
+  "dumbbell-fly": {
+    "id": "dumbbell-fly",
+    "type": "exercise",
+    "title": "Разведение гантелей",
+    "titleShort": "Разведения",
+    "tags": [
+      "изоляция",
+      "грудь",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major"
+      ],
+      "exercises": [],
+      "goals": [
+        "build-chest"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "image": "dumbbell-fly.jpg",
+    "status": "published",
+    "slug": "dumbbell-fly",
+    "path": "exercises/dumbbell-fly"
+  },
+  "dumbbell-press": {
+    "id": "dumbbell-press",
+    "type": "exercise",
+    "title": "Жим гантелей лёжа",
+    "titleShort": "Жим гантелей",
+    "tags": [
+      "базовое",
+      "грудь",
+      "трицепс",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "triceps-brachii",
+        "deltoid-anterior"
+      ],
+      "exercises": [
+        "bench-press"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "image": "dumbbell-press.jpg",
+    "status": "published",
+    "slug": "dumbbell-press",
+    "path": "exercises/dumbbell-press"
+  },
+  "hanging-leg-raises": {
+    "id": "hanging-leg-raises",
+    "type": "exercise",
+    "title": "Подъём ног в висе",
+    "titleShort": "Подъём ног",
+    "tags": [
+      "изоляция",
+      "пресс",
+      "кор",
+      "advanced"
+    ],
+    "related": {
+      "muscles": [
+        "rectus-abdominis",
+        "hip-flexors"
+      ],
+      "exercises": [],
+      "goals": [
+        "six-pack-abs"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "pull-up-bar"
+    ],
+    "image": "hanging-leg-raises.jpg",
+    "status": "published",
+    "slug": "hanging-leg-raises",
+    "path": "exercises/hanging-leg-raises"
+  },
+  "incline-bench-press": {
+    "id": "incline-bench-press",
+    "type": "exercise",
+    "title": "Жим штанги на наклонной скамье",
+    "titleShort": "Наклонный жим",
+    "tags": [
+      "базовое",
+      "грудь",
+      "верхняя грудь",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "deltoid-anterior"
+      ],
+      "exercises": [
+        "bench-press"
+      ],
+      "goals": [
+        "bench-100kg",
+        "build-chest"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "barbell",
+      "incline-bench"
+    ],
+    "image": "incline-bench-press.jpg",
+    "status": "published",
+    "slug": "incline-bench-press",
+    "path": "exercises/incline-bench-press"
+  },
+  "interval-training": {
+    "id": "interval-training",
+    "type": "exercise",
+    "title": "Интервальный бег",
+    "titleShort": "Интервалы",
+    "tags": [
+      "кардио",
+      "выносливость",
+      "ноги",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "quadriceps",
+        "gastrocnemius"
+      ],
+      "exercises": [
+        "running"
+      ],
+      "goals": [
+        "run-5km"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "interval-training.jpg",
+    "status": "published",
+    "slug": "interval-training",
+    "path": "exercises/interval-training"
+  },
+  "inverted-rows": {
+    "id": "inverted-rows",
+    "type": "exercise",
+    "title": "Горизонтальные подтягивания",
+    "titleShort": "Австралийские подтягивания",
+    "tags": [
+      "базовое",
+      "спина",
+      "бицепс",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "latissimus-dorsi",
+        "rhomboid",
+        "trapezius-middle"
+      ],
+      "exercises": [
+        "pull-ups"
+      ],
+      "goals": [
+        "pullups-10-reps"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "bar"
+    ],
+    "image": "inverted-rows.jpg",
+    "status": "published",
+    "slug": "inverted-rows",
+    "path": "exercises/inverted-rows"
+  },
+  "lat-pulldown": {
+    "id": "lat-pulldown",
+    "type": "exercise",
+    "title": "Тяга верхнего блока",
+    "titleShort": "Верхний блок",
+    "tags": [
+      "базовое",
+      "спина",
+      "бицепс",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "latissimus-dorsi"
+      ],
+      "exercises": [
+        "pull-ups",
+        "assisted-pull-ups"
+      ],
+      "goals": [
+        "pullups-10-reps"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "cable-machine"
+    ],
+    "image": "lat-pulldown.jpg",
+    "status": "published",
+    "slug": "lat-pulldown",
+    "path": "exercises/lat-pulldown"
+  },
+  "plank": {
+    "id": "plank",
+    "type": "exercise",
+    "title": "Планка",
+    "titleShort": "Планка",
+    "tags": [
+      "изоляция",
+      "пресс",
+      "кор",
+      "статика",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "rectus-abdominis",
+        "transversus-abdominis"
+      ],
+      "exercises": [],
+      "goals": [
+        "six-pack-abs"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "plank.jpg",
+    "status": "published",
+    "slug": "plank",
+    "path": "exercises/plank"
+  },
+  "pull-ups": {
+    "id": "pull-ups",
+    "type": "exercise",
+    "title": "Подтягивания",
+    "titleShort": "Подтягивания",
+    "tags": [
+      "базовое",
+      "спина",
+      "бицепс",
+      "intermediate"
+    ],
+    "related": {
+      "muscles": [
+        "latissimus-dorsi",
+        "biceps-brachii"
+      ],
+      "exercises": [
+        "assisted-pull-ups",
+        "lat-pulldown",
+        "inverted-rows"
+      ],
+      "goals": [
+        "pullups-10-reps"
+      ],
+      "pain": []
+    },
+    "equipment": [
+      "pull-up-bar"
+    ],
+    "image": "pull-ups.jpg",
+    "status": "published",
+    "slug": "pull-ups",
+    "path": "exercises/pull-ups"
+  },
+  "push-ups": {
+    "id": "push-ups",
+    "type": "exercise",
+    "title": "Отжимания",
+    "titleShort": "Отжимания",
+    "tags": [
+      "базовое",
+      "грудь",
+      "трицепс",
+      "собственный вес",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "triceps-brachii",
+        "deltoid-anterior"
+      ],
+      "exercises": [],
+      "goals": [],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "push-ups.jpg",
+    "status": "published",
+    "slug": "push-ups",
+    "path": "exercises/push-ups"
+  },
+  "running": {
+    "id": "running",
+    "type": "exercise",
+    "title": "Бег",
+    "titleShort": "Бег",
+    "tags": [
+      "кардио",
+      "выносливость",
+      "ноги",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "quadriceps",
+        "gastrocnemius",
+        "soleus"
+      ],
+      "exercises": [
+        "interval-training"
+      ],
+      "goals": [
+        "run-5km"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "running.jpg",
+    "status": "published",
+    "slug": "running",
+    "path": "exercises/running"
+  },
+  "russian-twists": {
+    "id": "russian-twists",
+    "type": "exercise",
+    "title": "Русские скручивания",
+    "titleShort": "Русские скручивания",
+    "tags": [
+      "изоляция",
+      "пресс",
+      "косые",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "external-oblique",
+        "internal-oblique"
+      ],
+      "exercises": [],
+      "goals": [
+        "six-pack-abs"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "russian-twists.jpg",
+    "status": "published",
+    "slug": "russian-twists",
+    "path": "exercises/russian-twists"
+  },
+  "squats": {
+    "id": "squats",
+    "type": "exercise",
+    "title": "Приседания",
+    "titleShort": "Приседания",
+    "tags": [
+      "базовое",
+      "ноги",
+      "ягодицы",
+      "beginner"
+    ],
+    "related": {
+      "muscles": [
+        "quadriceps",
+        "gluteus-maximus"
+      ],
+      "exercises": [],
+      "goals": [
+        "run-5km"
+      ],
+      "pain": []
+    },
+    "equipment": [],
+    "image": "squats.jpg",
+    "status": "published",
+    "slug": "squats",
+    "path": "exercises/squats"
+  },
+  "bench-100kg": {
+    "id": "bench-100kg",
+    "type": "goal",
+    "title": "Жать 100кг лёжа",
+    "titleShort": "Жим 100кг",
+    "tags": [
+      "сила",
+      "жим",
+      "грудь",
+      "базовое"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major",
+        "triceps-brachii",
+        "deltoid-anterior"
+      ],
+      "exercises": [
+        "bench-press",
+        "incline-bench-press",
+        "close-grip-bench-press"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "bench-100kg.jpg",
+    "status": "published",
+    "slug": "bench-100kg",
+    "path": "goals/bench-100kg"
+  },
+  "build-chest": {
+    "id": "build-chest",
+    "type": "goal",
+    "title": "Набрать массу груди",
+    "titleShort": "Масса груди",
+    "tags": [
+      "гипертрофия",
+      "грудь",
+      "масса",
+      "объём"
+    ],
+    "related": {
+      "muscles": [
+        "pectoralis-major"
+      ],
+      "exercises": [
+        "bench-press",
+        "incline-bench-press",
+        "dumbbell-fly",
+        "cable-crossover"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "build-chest.jpg",
+    "status": "published",
+    "slug": "build-chest",
+    "path": "goals/build-chest"
+  },
+  "pullups-10-reps": {
+    "id": "pullups-10-reps",
+    "type": "goal",
+    "title": "Подтянуться 10 раз",
+    "titleShort": "10 подтягиваний",
+    "tags": [
+      "сила",
+      "спина",
+      "подтягивания",
+      "базовое"
+    ],
+    "related": {
+      "muscles": [
+        "latissimus-dorsi",
+        "biceps-brachii",
+        "brachialis"
+      ],
+      "exercises": [
+        "pull-ups",
+        "assisted-pull-ups",
+        "lat-pulldown",
+        "inverted-rows"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "pullups-10-reps.jpg",
+    "status": "published",
+    "slug": "pullups-10-reps",
+    "path": "goals/pullups-10-reps"
+  },
+  "run-5km": {
+    "id": "run-5km",
+    "type": "goal",
+    "title": "Пробежать 5км",
+    "titleShort": "Бег 5км",
+    "tags": [
+      "выносливость",
+      "кардио",
+      "бег",
+      "ноги"
+    ],
+    "related": {
+      "muscles": [
+        "quadriceps",
+        "gastrocnemius",
+        "soleus"
+      ],
+      "exercises": [
+        "running",
+        "interval-training",
+        "squats",
+        "calf-raises"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "run-5km.jpg",
+    "status": "published",
+    "slug": "run-5km",
+    "path": "goals/run-5km"
+  },
+  "six-pack-abs": {
+    "id": "six-pack-abs",
+    "type": "goal",
+    "title": "Кубики пресса",
+    "titleShort": "Кубики",
+    "tags": [
+      "эстетика",
+      "пресс",
+      "рельеф",
+      "жиросжигание"
+    ],
+    "related": {
+      "muscles": [
+        "rectus-abdominis",
+        "external-oblique",
+        "internal-oblique"
+      ],
+      "exercises": [
+        "hanging-leg-raises",
+        "cable-crunches",
+        "plank",
+        "russian-twists"
+      ],
+      "goals": [],
+      "pain": []
+    },
+    "image": "six-pack-abs.jpg",
+    "status": "published",
+    "slug": "six-pack-abs",
+    "path": "goals/six-pack-abs"
   }
 }
