@@ -19,7 +19,8 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
     threshold,
     filterCounts,
     toggleFilter,
-    setThreshold
+    setThreshold,
+    resetFilters
   } = useGraphData(entityType, entityId, depth);
 
   const [hoveredNode, setHoveredNode] = useState(null);
@@ -123,73 +124,107 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
     );
   }
 
-  if (!graphData.nodes.length) {
-    return (
-      <div className="graph-empty">
-        <p>Нет данных для отображения</p>
-      </div>
-    );
-  }
-
   return (
     <div className="relationship-graph-container" ref={containerRef} style={{
       position: 'relative',
       width: '100%',
       height: '100%'
     }}>
-      {/* Controls */}
-      <GraphControls
-        threshold={threshold}
-        onThresholdChange={setThreshold}
-        filters={filters}
-        onFilterToggle={toggleFilter}
-        filterCounts={filterCounts}
-      />
+      {/* Empty state or Graph */}
+      {!graphData.nodes.length ? (
+        <div className="graph-empty" style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          gap: '1rem'
+        }}>
+          <p style={{ margin: 0 }}>Нет данных для отображения</p>
+          <button
+            onClick={resetFilters}
+            style={{
+              padding: '0.5rem 1rem',
+              background: 'var(--accent-primary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.8'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
+          >
+            Сбросить фильтры
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* Threshold Control */}
+          <GraphControls
+            threshold={threshold}
+            onThresholdChange={setThreshold}
+          />
 
-      {/* Graph Canvas */}
-      <div
-        ref={canvasContainerRef}
-        className="graph-canvas-container"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%'
-        }}
-      >
-        <GraphSVG
-          graphData={graphData}
-          width={canvasSize.width}
-          height={canvasSize.height}
-          sizeReady={sizeReady}
-          onNodeClick={handleNodeClick}
-          onNodeHover={handleNodeHover}
-        />
-      </div>
+          {/* Graph Canvas */}
+          <div
+            ref={canvasContainerRef}
+            className="graph-canvas-container"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%'
+            }}
+          >
+            <GraphSVG
+              graphData={graphData}
+              width={canvasSize.width}
+              height={canvasSize.height}
+              sizeReady={sizeReady}
+              onNodeClick={handleNodeClick}
+              onNodeHover={handleNodeHover}
+            />
+          </div>
+        </>
+      )}
 
-      {/* Legend - positioned over canvas at bottom */}
-      <div className="graph-legend" style={{
-        position: 'absolute',
-        bottom: '20px',
-        right: '20px',
-        top: 'auto'
-      }}>
-        <div className="legend-item">
-          <span className="legend-dot" style={{ backgroundColor: '#4caf50' }} />
-          <span>🎯 Цели</span>
+      {/* Legend - always in same position */}
+      <div className="graph-legend">
+        <div
+          className={`legend-item ${filters.goal ? 'active' : 'inactive'}`}
+          onClick={() => toggleFilter('goal')}
+          title="Цели - нажмите для фильтрации"
+        >
+          <span className="legend-dot legend-dot-goal" />
+          <span className="legend-label">Цели</span>
         </div>
-        <div className="legend-item">
-          <span className="legend-dot" style={{ backgroundColor: '#00d4ff' }} />
-          <span>🏋️ Упражнения</span>
+        <div
+          className={`legend-item ${filters.exercise ? 'active' : 'inactive'}`}
+          onClick={() => toggleFilter('exercise')}
+          title="Упражнения - нажмите для фильтрации"
+        >
+          <span className="legend-dot legend-dot-exercise" />
+          <span className="legend-label">Упражнения</span>
         </div>
-        <div className="legend-item">
-          <span className="legend-dot" style={{ backgroundColor: '#ff5252' }} />
-          <span>💪 Мышцы</span>
+        <div
+          className={`legend-item ${filters.muscle ? 'active' : 'inactive'}`}
+          onClick={() => toggleFilter('muscle')}
+          title="Мышцы - нажмите для фильтрации"
+        >
+          <span className="legend-dot legend-dot-muscle" />
+          <span className="legend-label">Мышцы</span>
         </div>
-        <div className="legend-item">
-          <span className="legend-dot" style={{ backgroundColor: '#f44336' }} />
-          <span>⚠️ Боли</span>
+        <div
+          className={`legend-item ${filters.pain ? 'active' : 'inactive'}`}
+          onClick={() => toggleFilter('pain')}
+          title="Боли - нажмите для фильтрации"
+        >
+          <span className="legend-dot legend-dot-pain" />
+          <span className="legend-label">Боли</span>
         </div>
       </div>
 

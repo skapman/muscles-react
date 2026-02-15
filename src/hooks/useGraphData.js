@@ -9,6 +9,7 @@ import { buildGraphData } from './useContentIndex';
 export function useGraphData(entityType, entityId, depth = 2) {
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [loading, setLoading] = useState(false);
+  // ✅ Using singular types to match content-index.json
   const [filters, setFilters] = useState({
     goal: true,
     exercise: true,
@@ -99,6 +100,17 @@ export function useGraphData(entityType, entityId, depth = 2) {
     }));
   };
 
+  // Reset all filters
+  const resetFilters = () => {
+    setFilters({
+      goal: true,
+      exercise: true,
+      muscle: true,
+      pain: true
+    });
+    setThreshold(0);
+  };
+
   // Get filter counts
   const filterCounts = useMemo(() => {
     const counts = {};
@@ -116,5 +128,6 @@ export function useGraphData(entityType, entityId, depth = 2) {
     filterCounts,
     toggleFilter,
     setThreshold,
+    resetFilters,
   };
 }

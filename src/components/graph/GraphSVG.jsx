@@ -185,15 +185,20 @@ export function GraphSVG({
     if (onNodeClick) onNodeClick(node);
   };
 
-  // Get node color by type
+  // Get node color by type from CSS variables
   const getNodeColor = (type) => {
-    const colors = {
-      goal: '#4caf50',      // ✅ Fixed: was 'goals'
-      exercise: '#00d4ff',  // ✅ Fixed: was 'exercises'
-      muscle: '#ff5252',    // ✅ Fixed: was 'muscles'
-      pain: '#f44336'
+    // Get computed CSS variable values from :root
+    const root = document.documentElement;
+    const style = getComputedStyle(root);
+
+    const colorMap = {
+      goal: style.getPropertyValue('--layer-goals').trim(),
+      exercise: style.getPropertyValue('--layer-exercises').trim(),
+      muscle: style.getPropertyValue('--layer-muscles').trim(),
+      pain: style.getPropertyValue('--layer-pain').trim()
     };
-    return colors[type] || '#999';
+
+    return colorMap[type] || '#999';
   };
 
   // Get node radius based on connections

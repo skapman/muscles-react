@@ -4,13 +4,15 @@
    ============================================ */
 
 :root {
-    /* Layer Colors */
-    --layer-muscles: #00d4ff;
-    --layer-pain: #ff5252;
-    --layer-nervous: #ffeb3b;
-    --layer-respiratory: #4caf50;
-    --layer-cardiovascular: #f44336;
-    --layer-gadgets: #9c27b0;
+    /* Layer Colors - Updated for consistency */
+    --layer-muscles: #FF6B9D;       /* фуксия */
+    --layer-pain: #8B1A1A;          /* бордовый */
+    --layer-nervous: #FFD600;       /* жёлтый */
+    --layer-respiratory: #29B6F6;   /* голубой */
+    --layer-cardiovascular: #FF1744;/* красный */
+    --layer-gadgets: #9C27B0;       /* фиолетовый */
+    --layer-goals: #4CAF50;         /* зелёный */
+    --layer-exercises: #FF8C00;     /* оранжевый */
 
     /* Base Colors (Dark Theme) */
     --bg-primary: #0f0f23;

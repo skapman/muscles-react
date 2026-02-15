@@ -70,9 +70,102 @@
   font-size: 14px;
 }
 
+/* Legend styles */
+.graph-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  max-width: calc(100vw - 40px);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.25rem 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.legend-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.legend-item.inactive {
+  opacity: 0.4;
+}
+
+.legend-item.inactive .legend-dot {
+  opacity: 0.3;
+}
+
+.legend-item.active {
+  opacity: 1;
+}
+
+.legend-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.legend-dot-goal {
+  background-color: var(--layer-goals);
+}
+
+.legend-dot-exercise {
+  background-color: var(--layer-exercises);
+}
+
+.legend-dot-muscle {
+  background-color: var(--layer-muscles);
+}
+
+.legend-dot-pain {
+  background-color: var(--layer-pain);
+}
+
+.legend-label {
+  font-size: 0.875rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .node text {
     font-size: 9px;
+  }
+
+  .graph-legend {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.5rem;
+    padding: 0.5rem 0.25rem;
+    flex-wrap: nowrap;
+    max-width: calc(100vw - 20px);
+    width: fit-content;
+  }
+
+  .legend-item {
+    flex-shrink: 0;
+    padding: 0.25rem 0.25rem;
   }
 }
