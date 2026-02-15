@@ -20,6 +20,7 @@ export function GraphSVG({
   const [hoveredNode, setHoveredNode] = useState(null);
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
   const [isReady, setIsReady] = useState(false);
+  const hasAutoZoomedRef = useRef(false);
 
   // Use force simulation hook (only when size is ready)
   const { nodes, links, simulation, isStable } = useForceSimulation(
@@ -28,11 +29,14 @@ export function GraphSVG({
     height,
     {
       onStable: () => {
-        // Auto-zoom to fit after stabilization
-        setTimeout(() => {
-          autoZoomToFit();
-          setTimeout(() => setIsReady(true), 100);
-        }, 100);
+        // Auto-zoom to fit after stabilization (only once)
+        if (!hasAutoZoomedRef.current) {
+          setTimeout(() => {
+            autoZoomToFit();
+            hasAutoZoomedRef.current = true;
+            setTimeout(() => setIsReady(true), 100);
+          }, 100);
+        }
       }
     }
   );
@@ -50,15 +54,16 @@ export function GraphSVG({
         g.attr('transform', event.transform);
       });
 
-    // Apply zoom behavior
+    // ✅ FIX: Properly initialize D3 zoom
+    // Apply zoom behavior first, which sets up event handlers
     svg.call(zoom);
 
-    // Initialize transform state explicitly after zoom is applied
-    // This prevents .invert() errors on first interaction
+    // Then explicitly set the transform state (D3 stores this in __zoom property)
+    // This must be done AFTER svg.call(zoom) to ensure proper initialization
     svg.call(zoom.transform, d3.zoomIdentity);
 
-    // Store zoom behavior for programmatic control
-    svgRef.current.__zoom = zoom;
+    // Store zoom behavior reference for programmatic control (not in __zoom!)
+    svgRef.current.__zoomBehavior = zoom;
 
     return () => {
       svg.on('.zoom', null);
@@ -106,7 +111,7 @@ export function GraphSVG({
     if (!svgRef.current || !gRef.current || nodes.length === 0) return;
 
     const svg = d3.select(svgRef.current);
-    const zoom = svgRef.current.__zoom;
+    const zoom = svgRef.current.__zoomBehavior;
     if (!zoom) return;
 
     // Calculate bounds
@@ -183,9 +188,9 @@ export function GraphSVG({
   // Get node color by type
   const getNodeColor = (type) => {
     const colors = {
-      goals: '#4caf50',
-      exercises: '#00d4ff',
-      muscles: '#ff5252',
+      goal: '#4caf50',      // ✅ Fixed: was 'goals'
+      exercise: '#00d4ff',  // ✅ Fixed: was 'exercises'
+      muscle: '#ff5252',    // ✅ Fixed: was 'muscles'
       pain: '#f44336'
     };
     return colors[type] || '#999';
@@ -205,6 +210,19 @@ export function GraphSVG({
 
     return Math.min(baseSize + connectionBonus, maxSize);
   };
+
+  // Debug logging for rendered nodes
+  useEffect(() => {
+    if (nodes.length > 0) {
+      console.log('🎨 Rendering Graph:', {
+        nodeCount: nodes.length,
+        linkCount: links.length,
+        nodeTypes: [...new Set(nodes.map(n => n.type))],
+        sampleNode: nodes[0],
+        sampleNodeColor: getNodeColor(nodes[0]?.type)
+      });
+    }
+  }, [nodes.length]);
 
   return (
     <>

@@ -25,6 +25,15 @@ export function useGraphData(entityType, entityId, depth = 2) {
       // Get full graph data from content index
       const data = buildGraphData();
 
+      // Debug logging
+      console.log('📊 Graph Data Built:', {
+        nodes: data.nodes.length,
+        links: data.links.length,
+        types: [...new Set(data.nodes.map(n => n.type))],
+        sampleNode: data.nodes[0],
+        sampleLink: data.links[0]
+      });
+
       // Convert edges format to match existing graph expectations
       const formattedData = {
         nodes: data.nodes,
