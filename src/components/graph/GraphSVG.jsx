@@ -50,7 +50,12 @@ export function GraphSVG({
         g.attr('transform', event.transform);
       });
 
+    // Apply zoom behavior
     svg.call(zoom);
+
+    // Initialize transform state explicitly after zoom is applied
+    // This prevents .invert() errors on first interaction
+    svg.call(zoom.transform, d3.zoomIdentity);
 
     // Store zoom behavior for programmatic control
     svgRef.current.__zoom = zoom;
