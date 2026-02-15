@@ -1,0 +1,40 @@
+{
+  "gluteus": {
+    "id": "gluteus",
+    "type": "muscle",
+    "title": "Ягодичная мышца",
+    "titleShort": "Ягодичная",
+    "layer": "muscles",
+    "tags": [
+      "ягодицы",
+      "бёдра",
+      "нижняя часть тела"
+    ],
+    "related": {
+      "muscles": [
+        "quadriceps",
+        "erector-spinae",
+        "hamstrings"
+      ],
+      "exercises": [
+        "squat",
+        "deadlift",
+        "hip-thrust",
+        "lunge"
+      ],
+      "goals": [
+        "muscle-mass",
+        "strength",
+        "rehabilitation"
+      ],
+      "pain": [
+        "lower-back",
+        "knee"
+      ]
+    },
+    "image": "gluteus.jpg",
+    "status": "published",
+    "slug": "gluteus",
+    "path": "muscles/gluteus"
+  }
+}

@@ -76,7 +76,7 @@ export function GraphSVG({
         d.fx = d.x;
         d.fy = d.y;
         d3.select(this).classed('dragging', true);
-        console.log('🎯 Drag started:', d.data?.title || d.data?.name);
+        console.log('🎯 Drag started:', d.title || d.label || d.data?.title || d.data?.name);
       })
       .on('drag', function(event, d) {
         d.fx = event.x;
@@ -291,7 +291,7 @@ export function GraphSVG({
                       userSelect: 'none'
                     }}
                   >
-                    {(node.data.title || node.data.name || '').substring(0, 12)}
+                    {(node.title || node.label || node.data?.title || node.data?.name || '').substring(0, 12)}
                   </text>
                 </g>
               );

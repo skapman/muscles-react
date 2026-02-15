@@ -15,6 +15,8 @@ const ExercisesHub = lazy(() => import('@pages/ExercisesHub').then(module => ({ 
 const FavoritesView = lazy(() => import('@pages/FavoritesView').then(module => ({ default: module.FavoritesView })))
 const SettingsView = lazy(() => import('@pages/SettingsView').then(module => ({ default: module.SettingsView })))
 const AboutView = lazy(() => import('@pages/AboutView').then(module => ({ default: module.AboutView })))
+const TestMDX = lazy(() => import('@pages/TestMDX').then(module => ({ default: module.TestMDX })))
+const ArticleView = lazy(() => import('@pages/ArticleView').then(module => ({ default: module.ArticleView })))
 
 function App() {
   return (
@@ -43,6 +45,13 @@ function App() {
             <Route path="/favorites" element={<FavoritesView />} />
             <Route path="/settings" element={<SettingsView />} />
             <Route path="/about" element={<AboutView />} />
+            <Route path="/test-mdx" element={<TestMDX />} />
+
+            {/* Article routes */}
+            <Route path="/muscles/:slug" element={<ArticleView type="muscles" />} />
+            <Route path="/exercises/:slug" element={<ArticleView type="exercises" />} />
+            <Route path="/goals/:slug" element={<ArticleView type="goals" />} />
+            <Route path="/pain/:slug" element={<ArticleView type="pain" />} />
           </Routes>
         </Suspense>
 

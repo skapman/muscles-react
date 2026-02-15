@@ -1,79 +1,49 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useData } from '@context/DataContext';
+import { buildGraphData } from './useContentIndex';
 
 /**
  * useGraphData hook
  * Manages graph data building and filtering
+ * Now uses content-index.json as data source
  */
 export function useGraphData(entityType, entityId, depth = 2) {
-  const { buildRelationshipGraph, getAllEntities } = useData();
   const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState({
-    goals: true,
-    exercises: true,
-    muscles: true,
+    goal: true,
+    exercise: true,
+    muscle: true,
     pain: true
   });
   const [threshold, setThreshold] = useState(0);
 
-  // Build graph when entity changes
+  // Build graph when component mounts or when filters change
   useEffect(() => {
-    if (!entityType || !entityId) return;
-
     setLoading(true);
 
     try {
-      let data;
+      // Get full graph data from content index
+      const data = buildGraphData();
 
-      if (entityId === 'all' && entityType === 'goals') {
-        // Build combined graph for all goals
-        data = buildAllGoalsGraph(depth);
-      } else {
-        // Build graph for single entity
-        data = buildRelationshipGraph(entityType, entityId, depth);
-      }
+      // Convert edges format to match existing graph expectations
+      const formattedData = {
+        nodes: data.nodes,
+        edges: data.links.map(link => ({
+          source: link.source,
+          target: link.target,
+          from: link.from,
+          to: link.to
+        }))
+      };
 
-      setGraphData(data);
+      setGraphData(formattedData);
     } catch (error) {
       console.error('Error building graph:', error);
+      setGraphData({ nodes: [], edges: [] });
     } finally {
       setLoading(false);
     }
-  }, [entityType, entityId, depth, buildRelationshipGraph]);
-
-  // Build combined graph for all goals
-  const buildAllGoalsGraph = (depth) => {
-    const allGoals = getAllEntities('goals');
-    const combinedNodes = new Map();
-    const combinedEdges = [];
-
-    allGoals.forEach(goal => {
-      const goalGraph = buildRelationshipGraph('goals', goal.id, depth);
-
-      // Add nodes
-      goalGraph.nodes.forEach(node => {
-        if (!combinedNodes.has(node.id)) {
-          combinedNodes.set(node.id, node);
-        }
-      });
-
-      // Add edges (avoid duplicates)
-      goalGraph.edges.forEach(edge => {
-        const edgeExists = combinedEdges.some(e =>
-          e.from === edge.from && e.to === edge.to
-        );
-        if (!edgeExists) {
-          combinedEdges.push(edge);
-        }
-      });
-    });
-
-    return {
-      nodes: Array.from(combinedNodes.values()),
-      edges: combinedEdges
-    };
-  };
+  }, []); // Only run once on mount
 
   // Filter nodes by type and threshold
   const filteredData = useMemo(() => {

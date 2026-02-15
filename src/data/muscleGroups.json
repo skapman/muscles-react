@@ -1,0 +1,12 @@
+{
+  "deltoid": {
+    "title": "Дельтовидная мышца",
+    "titleEn": "Deltoid",
+    "parts": ["anterior", "middle", "posterior"]
+  },
+  "trapezius": {
+    "title": "Трапециевидная мышца",
+    "titleEn": "Trapezius",
+    "parts": ["upper", "middle", "lower"]
+  }
+}
