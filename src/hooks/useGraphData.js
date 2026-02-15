@@ -55,9 +55,9 @@ export function useGraphData(entityType, entityId, depth = 2) {
     }
   }, []); // Only run once on mount
 
-  // Filter nodes by type and threshold
-  const filteredData = useMemo(() => {
-    if (!graphData.nodes.length) return graphData;
+  // Calculate max connections and filter nodes
+  const { filteredData, maxConnections } = useMemo(() => {
+    if (!graphData.nodes.length) return { filteredData: graphData, maxConnections: 10 };
 
     // Count connections for each node
     const connectionCounts = new Map();
@@ -69,6 +69,9 @@ export function useGraphData(entityType, entityId, depth = 2) {
       }).length;
       connectionCounts.set(node.id, count);
     });
+
+    // Find maximum connections
+    const maxConn = Math.max(...Array.from(connectionCounts.values()), 1);
 
     // Filter nodes
     const visibleNodes = graphData.nodes.filter(node => {
@@ -87,8 +90,11 @@ export function useGraphData(entityType, entityId, depth = 2) {
     });
 
     return {
-      nodes: visibleNodes,
-      edges: visibleEdges
+      filteredData: {
+        nodes: visibleNodes,
+        edges: visibleEdges
+      },
+      maxConnections: maxConn
     };
   }, [graphData, filters, threshold]);
 
@@ -125,6 +131,7 @@ export function useGraphData(entityType, entityId, depth = 2) {
     loading,
     filters,
     threshold,
+    maxConnections,
     filterCounts,
     toggleFilter,
     setThreshold,

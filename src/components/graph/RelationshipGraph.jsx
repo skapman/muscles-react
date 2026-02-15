@@ -17,6 +17,7 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
     loading,
     filters,
     threshold,
+    maxConnections,
     filterCounts,
     toggleFilter,
     setThreshold,
@@ -165,6 +166,7 @@ export function RelationshipGraph({ entityType, entityId, depth = 2 }) {
           {/* Threshold Control */}
           <GraphControls
             threshold={threshold}
+            maxConnections={maxConnections}
             onThresholdChange={setThreshold}
           />
 

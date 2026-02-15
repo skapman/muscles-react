@@ -7,10 +7,11 @@ import React from 'react';
  */
 export function GraphControls({
   threshold,
+  maxConnections = 10,
   onThresholdChange
 }) {
   // Calculate percentage for gradient
-  const percentage = (threshold / 10) * 100;
+  const percentage = (threshold / maxConnections) * 100;
 
   return (
     <div className="graph-threshold-control">
@@ -18,7 +19,7 @@ export function GraphControls({
       <input
         type="range"
         min="0"
-        max="10"
+        max={maxConnections}
         value={threshold}
         onChange={(e) => onThresholdChange(parseInt(e.target.value))}
         className="threshold-slider"
